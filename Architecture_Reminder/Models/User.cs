@@ -58,7 +58,9 @@ namespace Architecture_Reminder.Models
 
         public bool CheckPassword(string password)
         {
-            if (_password.CompareTo(password) == 1)
+            Console.WriteLine(password);
+            Console.WriteLine(_password);
+            if (_password.CompareTo(password) == 0)
                 return true;
             return false;
         }
