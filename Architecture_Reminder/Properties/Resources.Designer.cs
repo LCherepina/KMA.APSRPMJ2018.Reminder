@@ -67,5 +67,34 @@ namespace Architecture_Reminder.Properties
                 resourceCulture = value;
             }
         }
+
+        public static string SignIn_FailedToGetUser
+        {
+            get
+            {
+                return ResourceManager.GetString("SignIn_FailedToGetUser", resourceCulture);
+            }
+        }
+        public static string SignIn_UserDoesntExist
+        {
+            get
+            {
+                return ResourceManager.GetString("SignIn_UserDoesntExist", resourceCulture);
+            }
+        }
+        public static string SignIn_WrongPassword
+        {
+            get
+            {
+                return ResourceManager.GetString("SignIn_WrongPassword", resourceCulture);
+            }
+        }
+        public static string SignIn_FailedToValidatePassword
+        {
+            get
+            {
+                return ResourceManager.GetString("SignIn_FailedToValidatePassword", resourceCulture);
+            }
+        }
     }
 }

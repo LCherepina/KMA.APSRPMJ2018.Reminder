@@ -9,6 +9,7 @@ namespace Architecture_Reminder.Tools
     internal enum ModesEnum
     {
         SignIn,
+        SignUp,
         Main
     }
 
