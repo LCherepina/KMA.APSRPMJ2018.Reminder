@@ -20,7 +20,7 @@ namespace Architecture_Reminder.Tools.Controls
         public string Text
         {
             get { return (string)GetValue(TextProperty); }
-            set { SetValue(TextProperty, value); }
+            set { SetValue(CaptionProperty, value); }
         }
 
         public static readonly DependencyProperty CaptionProperty = DependencyProperty.Register

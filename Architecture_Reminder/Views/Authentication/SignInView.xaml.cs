@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Architecture_Reminder.ViewModels.Authentification;
+using System;
 
 
 namespace Architecture_Reminder.Views.Authentication
@@ -11,6 +12,9 @@ namespace Architecture_Reminder.Views.Authentication
         internal SignInView()
         {
             InitializeComponent();
+            var signInViewModel = new SignInViewModel();
+            DataContext = signInViewModel;
+            Console.WriteLine(signInViewModel.Login);
         }
     }
 }

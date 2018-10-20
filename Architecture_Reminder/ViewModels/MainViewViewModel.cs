@@ -17,7 +17,7 @@ namespace Architecture_Reminder.ViewModels
         private ObservableCollection<Reminder> _reminders;
         #region Commands
         private ICommand _addReminderCommand;
-        private ICommand _deleteReminderCommand
+        private ICommand _deleteReminderCommand;
         #endregion
         #endregion
 
