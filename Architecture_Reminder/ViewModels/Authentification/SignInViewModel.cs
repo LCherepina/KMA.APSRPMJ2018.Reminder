@@ -70,6 +70,12 @@ namespace Architecture_Reminder.ViewModels.Authentification
 
         #endregion
 
+        #region ConstructorAndInit
+        internal SignInViewModel()
+        {
+        }
+        #endregion
+
         private void CloseExecute(object obj)
         {
             StationManager.CloseApp();
@@ -82,34 +88,31 @@ namespace Architecture_Reminder.ViewModels.Authentification
         private void SignInExecute(object obj)
         {
             User currentUser;
-            Console.WriteLine(_login);
             try
             {
                 currentUser = DBManager.GetUserByLogin(_login);
             }
             catch (Exception e)
             {
-                MessageBox.Show(String.Format(Resources.SignIn_FailedToGetUser, Environment.NewLine,
-                    e.Message));
+                MessageBox.Show("Failed to get user with login +" + _login + "./n" + e.Message);
                 return;
             }
             if (currentUser == null)
             {
-                MessageBox.Show(String.Format(Resources.SignIn_UserDoesntExist, _login));
+                MessageBox.Show("User with login " + _login + " doesn't exist!");
                 return;
             }
             try
             {
                 if (!currentUser.CheckPassword(_password))
                 {
-                    MessageBox.Show(Resources.SignIn_WrongPassword);
+                    MessageBox.Show("Wrong password!");
                     return;
                 }
             }
             catch (Exception e)
             {
-                MessageBox.Show(String.Format(Resources.SignIn_FailedToValidatePassword, Environment.NewLine,
-                    e.Message));
+                MessageBox.Show("Failed to validate password!/n" + e.Message);
                 return;
             }
             StationManager.CurrentUser = currentUser;
@@ -121,14 +124,14 @@ namespace Architecture_Reminder.ViewModels.Authentification
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        internal virtual void OnPropertyChanged(string propertyName)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            /*PropertyChangedEventHandler handler = PropertyChanged;
+            //PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null)
             {
-                handler(this, new PropertyChangedEventArgs(name));
-            }*/
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
     }
 }

@@ -14,7 +14,6 @@ namespace Architecture_Reminder.Views.Authentication
             InitializeComponent();
             var signInViewModel = new SignInViewModel();
             DataContext = signInViewModel;
-            Console.WriteLine(signInViewModel.Login);
         }
     }
 }

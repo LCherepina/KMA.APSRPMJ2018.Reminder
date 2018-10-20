@@ -60,7 +60,7 @@ namespace Architecture_Reminder.Models
 
         private void SetPassword(string password)
         {
-
+            _password = password;
         }
 
         public bool CheckPassword(string password)

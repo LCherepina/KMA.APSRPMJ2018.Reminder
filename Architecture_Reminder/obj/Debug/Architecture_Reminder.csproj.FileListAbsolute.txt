@@ -50,7 +50,6 @@ C:\Users\Liza\Documents\GitHub\KMA.APSRPMJ2018.Reminder\Architecture_Reminder\ob
 C:\Users\Anna_Shkuta\Documents\GitHub\KMA.APSRPMJ2018.Reminder\Architecture_Reminder\bin\Debug\Architecture_Reminder.exe.config
 C:\Users\Anna_Shkuta\Documents\GitHub\KMA.APSRPMJ2018.Reminder\Architecture_Reminder\obj\Debug\Architecture_Reminder.exe
 C:\Users\Anna_Shkuta\Documents\GitHub\KMA.APSRPMJ2018.Reminder\Architecture_Reminder\obj\Debug\Architecture_Reminder.pdb
-C:\Users\Anna_Shkuta\Documents\GitHub\KMA.APSRPMJ2018.Reminder\Architecture_Reminder\obj\Debug\Architecture_Reminder.csprojResolveAssemblyReference.cache
 C:\Users\Anna_Shkuta\Documents\GitHub\KMA.APSRPMJ2018.Reminder\Architecture_Reminder\obj\Debug\Views\Reminder\ReminderConfigurationView.baml
 C:\Users\Anna_Shkuta\Documents\GitHub\KMA.APSRPMJ2018.Reminder\Architecture_Reminder\obj\Debug\MainWindow.g.cs
 C:\Users\Anna_Shkuta\Documents\GitHub\KMA.APSRPMJ2018.Reminder\Architecture_Reminder\obj\Debug\Tools\Controls\LabelAndPasswordControl.g.cs

@@ -79,6 +79,7 @@
     </Compile>
     <Compile Include="Tools\IContentWindow.cs" />
     <Compile Include="Tools\NavigationModel.cs" />
+    <Compile Include="Tools\PasswordBoxAssistant.cs" />
     <Compile Include="Tools\RelayCommand.cs" />
     <Compile Include="ViewModels\Authentification\SignInViewModel.cs" />
     <Compile Include="ViewModels\ReminderConfigurationViewModel.cs" />

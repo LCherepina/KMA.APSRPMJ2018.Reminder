@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Architecture_Reminder.Views.Authentication
 {
     /// <summary>
-    /// Interaction logic for Reminder.xaml
+    /// Interaction logic for SignUpView.xaml
     /// </summary>
-    public partial class Reminder : Page
+    public partial class SignUpView
     {
-        public Reminder()
+        public SignUpView()
         {
             InitializeComponent();
         }
