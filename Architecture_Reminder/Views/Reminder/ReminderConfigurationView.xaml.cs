@@ -13,16 +13,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Architecture_Reminder.Views
+namespace Architecture_Reminder.Views.Reminder
 {
     /// <summary>
-    /// Interaction logic for MainView.xaml
+    /// Interaction logic for ReminderConfigurationView.xaml
     /// </summary>
-    public partial class MainView : UserControl
+    public partial class ReminderConfigurationView : UserControl
     {
-        public MainView()
+        public ReminderConfigurationView(Models.Reminder reminder)
         {
             InitializeComponent();
+          //  this.DatePicker.Value = DateTime.Now;
         }
     }
 }
