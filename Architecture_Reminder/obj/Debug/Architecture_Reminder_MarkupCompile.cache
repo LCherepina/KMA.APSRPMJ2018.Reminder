@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Anna_Shkuta\Documents\GitHub\KMA.APSRPMJ2018.Reminder\Architecture_Reminder\App.xaml
-6-133410740
+7-1552086484
 
-21-1901518477
+23446705260
 13738642453
-MainWindow.xaml;Tools\Controls\LabelAndPasswordControl.xaml;Tools\Controls\LabelAndTextControl.xaml;Views\Authentication\SignInView.xaml;Views\MainView.xaml;Views\Reminder\ReminderConfigurationView.xaml;
+MainWindow.xaml;Tools\Controls\LabelAndPasswordControl.xaml;Tools\Controls\LabelAndTextControl.xaml;Views\Authentication\SignInView.xaml;Views\Authentication\SignUpView.xaml;Views\MainView.xaml;Views\Reminder\ReminderConfigurationView.xaml;
 
 False
 

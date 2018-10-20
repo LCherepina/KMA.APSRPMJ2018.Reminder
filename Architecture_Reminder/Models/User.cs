@@ -18,18 +18,12 @@ namespace Architecture_Reminder.Models
         // ????????/
 
         #region Fields
-        private string _email;
         private string _login;
         private string _password;
         private List<Reminder> _reminders;
         #endregion
 
         #region Properties
-        public string Email
-        {
-            get { return _email; }
-            private set { _email = value; }
-        }
         public string Login
         {
             get { return _login; }
@@ -49,9 +43,8 @@ namespace Architecture_Reminder.Models
 
         #region Constructor
 
-        public User(string email, string login, string password)
+        public User(string login, string password)
         {
-            _email = email;
             _login = login;
             _password = password;
         }

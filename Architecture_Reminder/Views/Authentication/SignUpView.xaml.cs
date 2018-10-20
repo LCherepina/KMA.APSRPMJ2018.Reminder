@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Architecture_Reminder.ViewModels.Authentification;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,8 @@ namespace Architecture_Reminder.Views.Authentication
         public SignUpView()
         {
             InitializeComponent();
+            var signUpViewModel = new SignUpViewModel();
+            DataContext = signUpViewModel;
         }
     }
 }

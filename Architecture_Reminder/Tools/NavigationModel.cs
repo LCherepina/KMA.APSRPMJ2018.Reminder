@@ -17,6 +17,7 @@ namespace Architecture_Reminder.Tools
     {
         private readonly IContentWindow _contentWindow;
         private SignInView _signInView;
+        private SignUpView _signUpView;
         private MainView _mainView;
 
         internal NavigationModel(IContentWindow contentWindow)
@@ -30,6 +31,9 @@ namespace Architecture_Reminder.Tools
             {
                 case ModesEnum.SignIn:
                     _contentWindow.ContentControl.Content = _signInView ?? (_signInView = new SignInView());
+                    break;
+                case ModesEnum.SignUp:
+                    _contentWindow.ContentControl.Content = _signUpView ?? (_signUpView = new SignUpView());
                     break;
                 case ModesEnum.Main:
                     _contentWindow.ContentControl.Content = _mainView ?? (_mainView = new MainView());
