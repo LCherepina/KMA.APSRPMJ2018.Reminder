@@ -1,21 +1,14 @@
-﻿using System;
+﻿using Architecture_Reminder.Tools;
+using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Architecture_Reminder.Models
 {
 
     public class User
     {
-
-        //to do ????
-        #region Const
-        private const string PrivateKey = "";
-        private const string PublicKey = "";
-        #endregion
-        // ????????/
 
         #region Fields
         private string _login;
@@ -46,23 +39,22 @@ namespace Architecture_Reminder.Models
         public User(string login, string password)
         {
             _login = login;
-            _password = password;
+            SetPassword(password);
         }
 
         #endregion
 
         private void SetPassword(string password)
         {
-            _password = password;
+            _password = Encrypting.Encrypt(password);
         }
+        
 
         public bool CheckPassword(string password)
         {
-            Console.WriteLine(password);
             Console.WriteLine(_password);
-            if (_password.CompareTo(password) == 0)
-                return true;
-            return false;
+            string res = Encrypting.Encrypt(password);
+            return _password.CompareTo(res) == 0;
         }
 
     }
