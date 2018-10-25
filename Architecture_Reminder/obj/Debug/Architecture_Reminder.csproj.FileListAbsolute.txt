@@ -74,3 +74,5 @@ C:\Users\Anna_Shkuta\Documents\GitHub\KMA.APSRPMJ2018.Reminder\Architecture_Remi
 C:\Users\Anna_Shkuta\Documents\GitHub\KMA.APSRPMJ2018.Reminder\Architecture_Reminder\obj\Debug\Architecture_Reminder.csprojResolveAssemblyReference.cache
 C:\Users\Anna_Shkuta\Documents\GitHub\KMA.APSRPMJ2018.Reminder\Architecture_Reminder\obj\Debug\Views\Authentication\SignUpView.g.cs
 C:\Users\Anna_Shkuta\Documents\GitHub\KMA.APSRPMJ2018.Reminder\Architecture_Reminder\obj\Debug\Views\Authentication\SignUpView.baml
+C:\Users\Liza\Documents\GitHub\KMA.APSRPMJ2018.Reminder\Architecture_Reminder\obj\Debug\Views\Authentication\SignUpView.g.cs
+C:\Users\Liza\Documents\GitHub\KMA.APSRPMJ2018.Reminder\Architecture_Reminder\obj\Debug\Views\Authentication\SignUpView.baml

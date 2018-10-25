@@ -71,6 +71,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Models\Reminder.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Tools\Controls\LabelAndPasswordControl.xaml.cs">
       <DependentUpon>LabelAndPasswordControl.xaml</DependentUpon>
     </Compile>
@@ -83,6 +84,7 @@
     <Compile Include="Tools\RelayCommand.cs" />
     <Compile Include="ViewModels\Authentification\SignInViewModel.cs" />
     <Compile Include="ViewModels\Authentification\SignUpViewModel.cs" />
+    <Compile Include="ViewModels\MainViewViewModel.cs" />
     <Compile Include="ViewModels\ReminderConfigurationViewModel.cs" />
     <Compile Include="Views\Authentication\SignInView.xaml.cs">
       <DependentUpon>SignInView.xaml</DependentUpon>

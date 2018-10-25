@@ -24,6 +24,7 @@ namespace Architecture_Reminder.Models
         #endregion
 
         #region Properties
+        
         public string Login
         {
             get { return _login; }
@@ -37,7 +38,7 @@ namespace Architecture_Reminder.Models
         public List<Reminder> Reminders
         {
             get { return _reminders; }
-            set { _reminders = value; }
+            private set { _reminders = value; }
         }
         #endregion
 
@@ -47,6 +48,11 @@ namespace Architecture_Reminder.Models
         {
             _login = login;
             _password = password;
+        }
+
+        private User()
+        {
+            _reminders = new List<Reminder>();
         }
 
         #endregion

@@ -6,18 +6,24 @@
              xmlns:local="clr-namespace:Architecture_Reminder.Views"
              mc:Ignorable="d" 
            >
-    <Grid Name="MainGrid" Height="Auto">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" >
+    <Grid Name="MainGrid" Height="Auto" ScrollViewer.CanContentScroll="True"
+          ScrollViewer.VerticalScrollBarVisibility="Auto" >
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="30*"></ColumnDefinition>
+            <ColumnDefinition Width="60"></ColumnDefinition>
             <ColumnDefinition Width="70*"></ColumnDefinition>
 
         </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
+        <Grid.RowDefinitions >
             <RowDefinition Height="60"></RowDefinition>
             <RowDefinition Height="60"></RowDefinition>
+         
 
         </Grid.RowDefinitions>
-        <Button Content="Add" Grid.Row="0" Margin="4"></Button>
-        <Button Content="Delete" Grid.Row="1" Margin="4"></Button>
-        </Grid>
+        <Button Content="Add" FontWeight="Bold" Command="{Binding AddReminderCommand}"  Grid.Row="0" Grid.Column="0" Margin="6"></Button>
+        <Button Content="Delete" FontWeight="Bold" Command="{Binding DeleteReminderCommand}" Grid.Row="1" Grid.Column="0" Margin="6"></Button>
+        
+    </Grid>
+        </ScrollViewer>
+
 </UserControl>

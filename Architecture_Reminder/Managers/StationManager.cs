@@ -4,7 +4,7 @@ using Architecture_Reminder.Models;
 
 namespace Architecture_Reminder.Managers
 {
-    class StationManager
+    public static class StationManager
     {
 
         public static User CurrentUser { get; set; }
