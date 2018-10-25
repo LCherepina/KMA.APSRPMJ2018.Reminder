@@ -78,6 +78,7 @@
     <Compile Include="Tools\Controls\LabelAndTextControl.xaml.cs">
       <DependentUpon>LabelAndTextControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Tools\Encrypting.cs" />
     <Compile Include="Tools\IContentWindow.cs" />
     <Compile Include="Tools\NavigationModel.cs" />
     <Compile Include="Tools\PasswordBoxAssistant.cs" />

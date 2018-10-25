@@ -1,10 +1,8 @@
 ﻿using Architecture_Reminder.Managers;
 using Architecture_Reminder.Models;
-using Architecture_Reminder.Properties;
 using Architecture_Reminder.Tools;
 using System;
 using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
 

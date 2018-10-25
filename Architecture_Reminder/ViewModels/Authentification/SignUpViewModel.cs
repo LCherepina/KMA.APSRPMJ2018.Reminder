@@ -17,6 +17,8 @@ namespace Architecture_Reminder.ViewModels.Authentification
         #region Fields
         private string _password;
         private string _login;
+        private string _firstName;
+        private string _lastName;
         #endregion
 
         #region Commands
@@ -42,6 +44,24 @@ namespace Architecture_Reminder.ViewModels.Authentification
             {
                 _login = value;
                 OnPropertyChanged("Login");
+            }
+        }
+        public string FirstName
+        {
+            get { return _firstName; }
+            set
+            {
+                _firstName = value;
+                OnPropertyChanged("FirstName");
+            }
+        }
+        public string LastName
+        {
+            get { return _lastName; }
+            set
+            {
+                _lastName = value;
+                OnPropertyChanged("LastName");
             }
         }
         #endregion
@@ -83,7 +103,10 @@ namespace Architecture_Reminder.ViewModels.Authentification
 
         private bool SignUpCanExecute(object obj)
         {
-            return !String.IsNullOrEmpty(_login) && !String.IsNullOrEmpty(_password);
+            return !String.IsNullOrEmpty(_login) && 
+                !String.IsNullOrEmpty(_password) &&
+                !String.IsNullOrEmpty(_firstName) &&
+                !String.IsNullOrEmpty(_lastName);
         }
 
         private void SignInExecute(object obj)
@@ -104,7 +127,7 @@ namespace Architecture_Reminder.ViewModels.Authentification
                 return;
             }
             MessageBox.Show("User with login "+_login + " is successfuly created!");
-            NavigationManager.Instance.Navigate(ModesEnum.Main);
+            NavigationManager.Instance.Navigate(ModesEnum.SignIn);
         }
 
 
