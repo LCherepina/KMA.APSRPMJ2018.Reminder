@@ -6,7 +6,8 @@
              xmlns:controls="clr-namespace:Architecture_Reminder.Tools.Controls"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
-               d:DesignWidth="350">
+               d:DesignWidth="350"
+             >
     <Grid Name="Grid1">
         <Grid.RowDefinitions>
             <RowDefinition Height="60"></RowDefinition>
