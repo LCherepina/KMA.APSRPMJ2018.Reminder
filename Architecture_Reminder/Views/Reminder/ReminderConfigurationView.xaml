@@ -18,7 +18,7 @@
             <ColumnDefinition Width="100"></ColumnDefinition>
             <ColumnDefinition MinWidth="100"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <DatePicker Name="DatePicker" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" DisplayDateStart="{x:Static sys:DateTime.Now}"   SelectedDate="{Binding RemDate , UpdateSourceTrigger=PropertyChanged}">
+        <DatePicker  Name="DatePicker" Focusable = "False" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" DisplayDateStart="{x:Static sys:DateTime.Now}"   SelectedDate="{Binding RemDate , UpdateSourceTrigger=PropertyChanged}">
             
         </DatePicker>
         <ComboBox Name="ComboBoxHours" Grid.Row="0" Grid.Column="1" Width="40" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"  ></ComboBox>

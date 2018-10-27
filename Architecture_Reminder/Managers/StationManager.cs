@@ -6,8 +6,7 @@ namespace Architecture_Reminder.Managers
 {
     public static class StationManager
     {
-
-        public static User CurrentUser { get; set; }
+        public static User CurrentUser { get ; set; }
 
         public static void Initialize()
         {

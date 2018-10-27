@@ -45,9 +45,29 @@ namespace Architecture_Reminder.Views
             MainGrid.Children.Clear();
 
             _countChildren = _mainViewViewModel.Reminders.Count();
-            if (_countChildren > 0)
+
+            int _nRows = MainGrid.RowDefinitions.Count;
+
+            if (_nRows < _countChildren)
             {
-                MainGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(60) });
+                for (int i = 0; i < (_countChildren - _nRows); i++)
+                {
+                    MainGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(60) });
+                }
+            }
+            else if (_nRows > _countChildren)
+            {
+                for (int i = 0; i < ( _nRows - _countChildren); i++)
+                {
+                    MainGrid.RowDefinitions.RemoveAt(_countChildren-i);
+                }
+            }
+        
+
+
+           if (_countChildren > 0)
+            {
+                //MainGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(60) });
             }
             Console.WriteLine(_countChildren);
             for (int i = 0; i < _countChildren; i++)

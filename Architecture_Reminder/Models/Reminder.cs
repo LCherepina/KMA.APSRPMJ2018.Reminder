@@ -57,7 +57,7 @@ namespace Architecture_Reminder.Models
             _text = text;
             _myId = _id;
             _id++;
-         //   user.Reminders.Add(this);
+          //  user.Reminders.Add(this);
         }
 
         private Reminder() { }
