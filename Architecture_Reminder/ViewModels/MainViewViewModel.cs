@@ -20,7 +20,7 @@ namespace Architecture_Reminder.ViewModels
     {
         #region Fields
         private Reminder _selectedReminder;
-        private ObservableCollection<Reminder> _reminders;
+        private List<Reminder> _reminders;
 
         #region Commands
         private ICommand _addReminderCommand;
@@ -48,7 +48,7 @@ namespace Architecture_Reminder.ViewModels
 
         #endregion
 
-        public ObservableCollection<Reminder> Reminders
+        public List<Reminder> Reminders
         {
             get { return _reminders; }
         }
@@ -74,11 +74,12 @@ namespace Architecture_Reminder.ViewModels
 
         private void OnPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs)
         {
-                OnReminderChanged(_selectedReminder);
+            //Console.WriteLine(_selectedReminder.ToString());
+            OnReminderChanged(_selectedReminder);
         }
         private void FillReminder()
         {
-            _reminders = new ObservableCollection<Reminder>();
+            _reminders = new List<Reminder>();
           
         }
         private void AddReminderExecute(object o)
@@ -88,18 +89,17 @@ namespace Architecture_Reminder.ViewModels
             Reminder reminder = new Reminder(DateTime.Today.Date, DateTime.Now.Hour+1 ,DateTime.Now.Minute,"");
             _reminders.Add(reminder);
              _selectedReminder = reminder;
-            OnPropertyChanged(nameof(reminder));
+            OnPropertyChanged();
         }
         private void DeleteReminderExecute(KeyEventArgs args)
         {
            //  if (args.Key != Key.Delete) return;
             if (SelectedReminder == null) return;
+            if (_reminders.Count() == 0) return;
             
-            //  StationManager.CurrentUser.Reminders.RemoveAll(uwr => uwr.Guid == SelectedReminder.Guid);
-            //  Reminders.Remove();
-            //   FillReminder();
-            //  OnPropertyChanged(nameof(SelectedReminder));
-            // OnPropertyChanged(nameof(Reminders));
+            _reminders.RemoveAt(0);
+            OnPropertyChanged();
+            
         }
 
 

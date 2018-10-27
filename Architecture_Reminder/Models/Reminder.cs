@@ -8,15 +8,22 @@ namespace Architecture_Reminder.Models
 {
     public class Reminder
     {
-
+        public static int _id = 1;
         #region Fields
         private DateTime _dateTime;
         private int _minutes;
         private int _hours;
         private string _text;
+        private int _myId;
         #endregion
 
         #region Properties
+
+        public int MyId
+        {
+            get { return _myId; }
+            set { _myId = value; }
+        }
 
         public DateTime RemDate
         {
@@ -48,11 +55,18 @@ namespace Architecture_Reminder.Models
             _hours = hours;
             _minutes = minutes;
             _text = text;
+            _myId = _id;
+            _id++;
          //   user.Reminders.Add(this);
         }
 
         private Reminder() { }
         #endregion
+
+        public String ToString()
+        {
+            return _text;
+        }
 
     }
 }

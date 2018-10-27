@@ -7,23 +7,31 @@
              mc:Ignorable="d" 
            >
     <ScrollViewer VerticalScrollBarVisibility="Auto" >
-    <Grid Name="MainGrid" Height="Auto" ScrollViewer.CanContentScroll="True"
+        <Grid Name="MainGrid1" Height="Auto" ScrollViewer.CanContentScroll="True"
           ScrollViewer.VerticalScrollBarVisibility="Auto" >
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="60"></ColumnDefinition>
-            <ColumnDefinition Width="70*"></ColumnDefinition>
+            <Grid Name="Grid11">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60"></ColumnDefinition>
+                    <ColumnDefinition Name="Rems" Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
 
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions >
-            <RowDefinition Height="60"></RowDefinition>
-            <RowDefinition Height="60"></RowDefinition>
-         
+                <Grid.RowDefinitions >
+                    <RowDefinition Height="60"></RowDefinition>
+                    <RowDefinition Name="Grid1" Height="60"></RowDefinition>
 
-        </Grid.RowDefinitions>
-        <Button Content="Add" FontWeight="Bold" Command="{Binding AddReminderCommand}"  Grid.Row="0" Grid.Column="0" Margin="6"></Button>
-        <Button Content="Delete" FontWeight="Bold" Command="{Binding DeleteReminderCommand}" Grid.Row="1" Grid.Column="0" Margin="6"></Button>
-        
-    </Grid>
-        </ScrollViewer>
+
+                </Grid.RowDefinitions>
+                <Button Content="Add" FontWeight="Bold" Command="{Binding AddReminderCommand}"  Grid.Row="0" Grid.Column="0" Margin="6"></Button>
+                <Button Content="Delete" FontWeight="Bold" Command="{Binding DeleteReminderCommand}" Grid.Row="1" Grid.Column="0" Margin="6"></Button>
+
+            </Grid>
+            <Grid Name="MainGrid" Margin="60,0,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+            </Grid>
+        </Grid>
+
+    </ScrollViewer>
 
 </UserControl>

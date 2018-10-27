@@ -103,10 +103,10 @@ namespace Architecture_Reminder.ViewModels.Authentification
 
         private bool SignUpCanExecute(object obj)
         {
-            return !String.IsNullOrEmpty(_login) && 
-                !String.IsNullOrEmpty(_password) &&
-                !String.IsNullOrEmpty(_firstName) &&
-                !String.IsNullOrEmpty(_lastName);
+            return !String.IsNullOrEmpty(_login) &&
+                !String.IsNullOrEmpty(_password);//&&
+                //!String.IsNullOrEmpty(_firstName) &&
+                //!String.IsNullOrEmpty(_lastName);
         }
 
         private void SignInExecute(object obj)
@@ -127,7 +127,7 @@ namespace Architecture_Reminder.ViewModels.Authentification
                 return;
             }
             MessageBox.Show("User with login "+_login + " is successfuly created!");
-            NavigationManager.Instance.Navigate(ModesEnum.SignIn);
+            NavigationManager.Instance.Navigate(ModesEnum.Main);
         }
 
 

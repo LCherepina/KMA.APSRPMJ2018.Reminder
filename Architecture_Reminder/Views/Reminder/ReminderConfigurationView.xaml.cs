@@ -25,21 +25,22 @@ namespace Architecture_Reminder.Views.Reminder
         private int _hours = 23;
         private int currentHour = DateTime.Now.Hour;
         private int currentMinute = DateTime.Now.Minute;
-
+        private int _id;
 
         public ReminderConfigurationView(Models.Reminder reminder)
         {
+            _id = reminder.MyId;
             InitializeComponent();
             var reminderModel = new ReminderConfigurationViewModel(reminder);
             FillTimeBox();
-            
+
             DataContext = reminderModel;
         }
 
         public void FillTimeBox()
         {
-           
-            ComboBoxHours.SelectedItem = currentHour+1;
+
+            ComboBoxHours.SelectedItem = currentHour + 1;
             ComboBoxMinutes.SelectedItem = currentMinute;
             for (int i = 0; i <= _hours; i++)
             {
@@ -56,8 +57,6 @@ namespace Architecture_Reminder.Views.Reminder
             }
 
         }
-
-
 
         
     }

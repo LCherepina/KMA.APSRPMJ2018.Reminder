@@ -42,19 +42,22 @@ namespace Architecture_Reminder.Views
 
         private void OnReminderChanged(Models.Reminder reminder)
         {
-            _currentReminderConfigurationView = new ReminderConfigurationView(reminder);
-            MainGrid.Children.Add(_currentReminderConfigurationView);
-            if (_countChildren >= 2)
+            MainGrid.Children.Clear();
+
+            _countChildren = _mainViewViewModel.Reminders.Count();
+            if (_countChildren > 0)
             {
-                MainGrid.RowDefinitions.Add(new RowDefinition() {Height = new GridLength(60)});
+                MainGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(60) });
             }
-
-            Grid.SetRow(_currentReminderConfigurationView, _countChildren);
-            Grid.SetRowSpan(_currentReminderConfigurationView, 2);
-            Grid.SetColumn(_currentReminderConfigurationView, 1);
-            _countChildren++;
-
+            Console.WriteLine(_countChildren);
+            for (int i = 0; i < _countChildren; i++)
+            {
+                _currentReminderConfigurationView = new ReminderConfigurationView(_mainViewViewModel.Reminders.ElementAt(i));
+                MainGrid.Children.Add(_currentReminderConfigurationView);
+                Grid.SetRow(_currentReminderConfigurationView, i);
+            }
         }
+
     }
 
 }
