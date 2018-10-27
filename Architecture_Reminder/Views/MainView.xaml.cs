@@ -76,8 +76,9 @@ namespace Architecture_Reminder.Views
                 MainGrid.Children.Add(_currentReminderConfigurationView);
                 Grid.SetRow(_currentReminderConfigurationView, i);
             }
-        }
 
+            
+        }
     }
 
 }
