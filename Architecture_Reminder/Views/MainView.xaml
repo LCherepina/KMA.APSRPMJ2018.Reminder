@@ -16,8 +16,9 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid.RowDefinitions >
-                    <RowDefinition Height="60"></RowDefinition>
-                    <RowDefinition Name="Grid1" Height="60"></RowDefinition>
+                    
+                    <RowDefinition Height="70"></RowDefinition>
+                    <RowDefinition Name="Grid1" Height="70"></RowDefinition>
 
 
                 </Grid.RowDefinitions>
@@ -25,11 +26,14 @@
                 <Button Content="Delete" FontWeight="Bold" Command="{Binding DeleteReminderCommand}" Grid.Row="1" Grid.Column="0" Margin="6"></Button>
 
             </Grid>
+            
             <Grid Name="MainGrid" Margin="60,0,0,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" ></ColumnDefinition>
-                </Grid.ColumnDefinitions>
+
+                <ListBox Name="ListBoxMain" BorderThickness="0" HorizontalContentAlignment="Stretch" SelectedIndex="{Binding SelectedReminderIndex}">
+                  
+                </ListBox>
             </Grid>
+           
         </Grid>
 
     </ScrollViewer>
