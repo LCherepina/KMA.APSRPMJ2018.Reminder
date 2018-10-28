@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Architecture_Reminder.Models;
@@ -22,6 +23,7 @@ namespace Architecture_Reminder.ViewModels
         #region Commands
         private ICommand _addReminderCommand;
         private ICommand _deleteReminderCommand;
+        private ICommand _runReminderCommand;
         #endregion
         #endregion
         
@@ -40,6 +42,14 @@ namespace Architecture_Reminder.ViewModels
             get
             {
                 return _deleteReminderCommand ?? (_deleteReminderCommand = new RelayCommand<KeyEventArgs>(DeleteReminderExecute));
+            }
+        }
+
+        public ICommand RunReminderCommand
+        {
+            get
+            {
+                return _runReminderCommand ?? (_runReminderCommand = new RelayCommand<object>(RunReminderExecute));
             }
         }
 
@@ -93,12 +103,21 @@ namespace Architecture_Reminder.ViewModels
         {
             
             if (_reminders.Count == 0) return;
+            if (SelectedReminderIndex < 0) return;
             _mainView = new MainView();
             _reminders.RemoveAt(SelectedReminderIndex);
              OnPropertyChanged();
             
         }
 
+        private void RunReminderExecute(object o)
+        {
+            
+            Console.WriteLine("Reminder");
+            
+           
+            OnPropertyChanged();
+        }
 
         #region EventsAndHandlers
         #region Loader

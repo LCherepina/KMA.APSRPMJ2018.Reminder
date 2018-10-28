@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Architecture_Reminder"
         mc:Ignorable="d"
-        Title="Reminder" Height="350" Width="525" MinWidth="370" MinHeight="160">
+        Title="Reminder" Height="370" Width="525" MinWidth="370" MinHeight="160">
     <ContentControl Name="_contentControl">
         
     </ContentControl>

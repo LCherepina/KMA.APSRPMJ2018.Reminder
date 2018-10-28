@@ -19,6 +19,7 @@ namespace Architecture_Reminder.ViewModels.Authentification
         private string _login;
         private string _firstName;
         private string _lastName;
+        private string _email;
         #endregion
 
         #region Commands
@@ -64,6 +65,15 @@ namespace Architecture_Reminder.ViewModels.Authentification
                 OnPropertyChanged("LastName");
             }
         }
+        public string Email
+        {
+            get { return _email; }
+            set
+            {
+                _email = value;
+                OnPropertyChanged("Email");
+            }
+        }
         #endregion
 
         #region Commands
@@ -104,9 +114,10 @@ namespace Architecture_Reminder.ViewModels.Authentification
         private bool SignUpCanExecute(object obj)
         {
             return !String.IsNullOrEmpty(_login) &&
-                !String.IsNullOrEmpty(_password);//&&
-                //!String.IsNullOrEmpty(_firstName) &&
-                //!String.IsNullOrEmpty(_lastName);
+                !String.IsNullOrEmpty(_password)&&
+                !String.IsNullOrEmpty(_firstName) &&
+                !String.IsNullOrEmpty(_lastName) && 
+                !String.IsNullOrEmpty(_email);
         }
 
         private void SignInExecute(object obj)
