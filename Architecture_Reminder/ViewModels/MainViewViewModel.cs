@@ -27,7 +27,7 @@ namespace Architecture_Reminder.ViewModels
         private ICommand _deleteReminderCommand;
         #endregion
         #endregion
-        
+
         #region Properties
         #region Commands
 
@@ -61,6 +61,15 @@ namespace Architecture_Reminder.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        public string CurrentReminder
+        {
+            get
+            {
+
+                return "";
+            }
+        }
         #endregion
 
         #region Constructor
@@ -86,13 +95,14 @@ namespace Architecture_Reminder.ViewModels
         {
           //  Reminder reminder = new Reminder(DateTime.Today.Date, "", StationManager.CurrentUser);
        
-            Reminder reminder = new Reminder(DateTime.Today.Date, DateTime.Now.Hour+1 ,DateTime.Now.Minute,"");
+            Reminder reminder = new Reminder(DateTime.Today.Date, DateTime.Now.Hour+1+"" ,DateTime.Now.Minute+"","");
             _reminders.Add(reminder);
              _selectedReminder = reminder;
             OnPropertyChanged();
         }
         private void DeleteReminderExecute(KeyEventArgs args)
         {
+            
            //  if (args.Key != Key.Delete) return;
             if (SelectedReminder == null) return;
             if (_reminders.Count() == 0) return;

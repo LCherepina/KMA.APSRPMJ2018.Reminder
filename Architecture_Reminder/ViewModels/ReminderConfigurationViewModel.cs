@@ -42,7 +42,7 @@ namespace Architecture_Reminder.ViewModels
             }
         }
 
-        public int RemTimeHours
+        public string RemTimeHours
         {
             get { return _currentReminder.RemTimeHour; }
             set
@@ -51,7 +51,7 @@ namespace Architecture_Reminder.ViewModels
                 OnPropertyChanged();
             }
         }
-        public int RemTimeMinutes
+        public string RemTimeMinutes
         {
             get { return _currentReminder.RemTimeMin; }
             set

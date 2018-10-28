@@ -25,6 +25,7 @@ namespace Architecture_Reminder.Views
         private int _countChildren =0;
         private MainViewViewModel _mainViewViewModel;
         private ReminderConfigurationView _currentReminderConfigurationView;
+        
 
         public MainView()
         {
@@ -42,7 +43,14 @@ namespace Architecture_Reminder.Views
 
         private void OnReminderChanged(Models.Reminder reminder)
         {
-            MainGrid.Children.Clear();
+            RemsList.Items.Clear();
+            _countChildren = _mainViewViewModel.Reminders.Count();
+            for(int i=0; i<_countChildren; i++)
+            {
+                _currentReminderConfigurationView = new ReminderConfigurationView(_mainViewViewModel.Reminders.ElementAt(i));
+                RemsList.Items.Add(_currentReminderConfigurationView);
+            }
+            /*MainGrid.Children.Clear();
 
             _countChildren = _mainViewViewModel.Reminders.Count();
 
@@ -62,9 +70,9 @@ namespace Architecture_Reminder.Views
                     MainGrid.RowDefinitions.RemoveAt(_countChildren-i);
                 }
             }
-        
+        */
 
-
+            /*
            if (_countChildren > 0)
             {
                 //MainGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(60) });
@@ -77,7 +85,7 @@ namespace Architecture_Reminder.Views
                 Grid.SetRow(_currentReminderConfigurationView, i);
             }
 
-            
+            */
         }
     }
 

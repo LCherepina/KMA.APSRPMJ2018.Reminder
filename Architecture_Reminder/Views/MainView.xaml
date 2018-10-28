@@ -26,9 +26,12 @@
 
             </Grid>
             <Grid Name="MainGrid" Margin="60,0,0,0">
-                <Grid.ColumnDefinitions>
+                <ListBox Name="RemsList" SelectionMode="Single" SelectedValue="{Binding CurrentReminder}">
+                    
+                </ListBox>
+                <!--<Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" ></ColumnDefinition>
-                </Grid.ColumnDefinitions>
+                </Grid.ColumnDefinitions>-->
             </Grid>
         </Grid>
 

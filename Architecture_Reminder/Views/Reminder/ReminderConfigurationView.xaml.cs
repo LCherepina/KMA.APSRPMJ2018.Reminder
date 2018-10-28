@@ -21,8 +21,8 @@ namespace Architecture_Reminder.Views.Reminder
     /// </summary>
     public partial class ReminderConfigurationView
     {
-        private int _minutes = 59;
-        private int _hours = 23;
+        //private string _minutes = "59";
+        //private string _hours = "23";
         private int currentHour = DateTime.Now.Hour;
         private int currentMinute = DateTime.Now.Minute;
         private int _id;
@@ -39,23 +39,21 @@ namespace Architecture_Reminder.Views.Reminder
 
         public void FillTimeBox()
         {
-
-            ComboBoxHours.SelectedItem = currentHour + 1;
-            ComboBoxMinutes.SelectedItem = currentMinute;
-            for (int i = 0; i <= _hours; i++)
+            for (int i = 0; i <= 23; i++)
             {
                 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 if (i < 10) ComboBoxHours.Items.Add("0" + i);
-                else ComboBoxHours.Items.Add(i);
+                else ComboBoxHours.Items.Add(i+"");
             }
 
-            for (int i = 0; i <= _minutes; i++)
+            for (int i = 0; i <= 59; i++)
             {
                 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 if (i < 10) ComboBoxMinutes.Items.Add("0" + i);
-                else ComboBoxMinutes.Items.Add(i);
+                else ComboBoxMinutes.Items.Add(i+"");
             }
-
+            ComboBoxHours.SelectedItem = currentHour + 1;
+            ComboBoxMinutes.SelectedItem = currentMinute;
         }
 
         
