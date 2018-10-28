@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         Title="Reminder" Height="370" Width="525" MinWidth="370" MinHeight="160">
     <ContentControl Name="_contentControl">
-        
+
     </ContentControl>
 </Window>

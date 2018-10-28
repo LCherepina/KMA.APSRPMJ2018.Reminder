@@ -1,6 +1,4 @@
-﻿
-
-using System;
+﻿using System;
 using System.Windows.Controls;
 using Architecture_Reminder.Tools;
 using Architecture_Reminder.Managers;
@@ -22,7 +20,7 @@ namespace Architecture_Reminder
 
         public ContentControl ContentControl
         {
-            get{ return _contentControl; }
+            get { return _contentControl; }
         }
     }
 }

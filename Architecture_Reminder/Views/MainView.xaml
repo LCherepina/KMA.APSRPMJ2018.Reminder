@@ -16,23 +16,25 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid.RowDefinitions >
-                    <RowDefinition Height="60"></RowDefinition>
-                    <RowDefinition Name="Grid1" Height="60"></RowDefinition>
 
+                    <RowDefinition Height="70"></RowDefinition>
+                    <RowDefinition Height="70"></RowDefinition>
+                    <RowDefinition Height="70"></RowDefinition>
 
                 </Grid.RowDefinitions>
                 <Button Content="Add" FontWeight="Bold" Command="{Binding AddReminderCommand}"  Grid.Row="0" Grid.Column="0" Margin="6"></Button>
                 <Button Content="Delete" FontWeight="Bold" Command="{Binding DeleteReminderCommand}" Grid.Row="1" Grid.Column="0" Margin="6"></Button>
+                <Button Content="Run" FontWeight="Bold" Command="{Binding RunReminderCommand}"  Grid.Row="2" Grid.Column="0" Margin="6"></Button>
 
             </Grid>
+
             <Grid Name="MainGrid" Margin="60,0,0,0">
-                <ListBox Name="RemsList" SelectionMode="Single" SelectedValue="{Binding CurrentReminder}">
-                    
+
+                <ListBox Name="ListBoxMain" BorderThickness="0" HorizontalContentAlignment="Stretch" SelectedIndex="{Binding SelectedReminderIndex}">
+
                 </ListBox>
-                <!--<Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" ></ColumnDefinition>
-                </Grid.ColumnDefinitions>-->
             </Grid>
+
         </Grid>
 
     </ScrollViewer>

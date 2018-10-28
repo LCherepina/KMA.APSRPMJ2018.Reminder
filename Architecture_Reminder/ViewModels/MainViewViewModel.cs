@@ -1,17 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using Architecture_Reminder.Managers;
 using Architecture_Reminder.Models;
 using Architecture_Reminder.Tools;
 using Architecture_Reminder.Views;
-using Architecture_Reminder.Views.Reminder;
 using KMA.APZRPMJ2018.WalletSimulator.Properties;
 
 namespace Architecture_Reminder.ViewModels
@@ -19,12 +14,16 @@ namespace Architecture_Reminder.ViewModels
     class MainViewViewModel : INotifyPropertyChanged
     {
         #region Fields
+
+        private int _indexSelected;
         private Reminder _selectedReminder;
+        private MainView _mainView;
         private List<Reminder> _reminders;
 
         #region Commands
         private ICommand _addReminderCommand;
         private ICommand _deleteReminderCommand;
+        private ICommand _runReminderCommand;
         #endregion
         #endregion
 
@@ -46,34 +45,34 @@ namespace Architecture_Reminder.ViewModels
             }
         }
 
+        public ICommand RunReminderCommand
+        {
+            get
+            {
+                return _runReminderCommand ?? (_runReminderCommand = new RelayCommand<object>(RunReminderExecute));
+            }
+        }
+
         #endregion
 
         public List<Reminder> Reminders
         {
             get { return _reminders; }
         }
-        public Reminder SelectedReminder
+
+        public int SelectedReminderIndex
         {
-            get { return _selectedReminder; }
+            get { return _indexSelected; }
             set
             {
-                _selectedReminder = value;
-                OnPropertyChanged();
-            }
-        }
+                _indexSelected = value;
 
-        public string CurrentReminder
-        {
-            get
-            {
-
-                return "";
             }
         }
         #endregion
 
         #region Constructor
-        
+
         public MainViewViewModel()
         {
             FillReminder();
@@ -83,35 +82,42 @@ namespace Architecture_Reminder.ViewModels
 
         private void OnPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs)
         {
-            //Console.WriteLine(_selectedReminder.ToString());
             OnReminderChanged(_selectedReminder);
         }
         private void FillReminder()
         {
             _reminders = new List<Reminder>();
-          
+
         }
         private void AddReminderExecute(object o)
         {
-          //  Reminder reminder = new Reminder(DateTime.Today.Date, "", StationManager.CurrentUser);
-       
-            Reminder reminder = new Reminder(DateTime.Today.Date, DateTime.Now.Hour+1+"" ,DateTime.Now.Minute+"","");
+            //  Reminder reminder = new Reminder(DateTime.Today.Date, "", StationManager.CurrentUser);
+
+            Reminder reminder = new Reminder(DateTime.Today.Date, DateTime.Now.Hour + 1+"", DateTime.Now.Minute+"", "");
             _reminders.Add(reminder);
-             _selectedReminder = reminder;
+            _selectedReminder = reminder;
             OnPropertyChanged();
-        }
-        private void DeleteReminderExecute(KeyEventArgs args)
-        {
-            
-           //  if (args.Key != Key.Delete) return;
-            if (SelectedReminder == null) return;
-            if (_reminders.Count() == 0) return;
-            
-            _reminders.RemoveAt(0);
-            OnPropertyChanged();
-            
         }
 
+        private void DeleteReminderExecute(KeyEventArgs args)
+        {
+
+            if (_reminders.Count == 0) return;
+            if (SelectedReminderIndex < 0) return;
+            _mainView = new MainView();
+            _reminders.RemoveAt(SelectedReminderIndex);
+            OnPropertyChanged();
+
+        }
+
+        private void RunReminderExecute(object o)
+        {
+
+            Console.WriteLine("Reminder");
+
+
+            OnPropertyChanged();
+        }
 
         #region EventsAndHandlers
         #region Loader
@@ -134,6 +140,6 @@ namespace Architecture_Reminder.ViewModels
         #endregion
     }
 
-  
-    
+
+
 }

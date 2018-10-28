@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Architecture_Reminder.ViewModels;
 using Architecture_Reminder.Views.Reminder;
 
@@ -22,10 +11,9 @@ namespace Architecture_Reminder.Views
     /// </summary>
     public partial class MainView : UserControl
     {
-        private int _countChildren =0;
+        private int _countChildren;
         private MainViewViewModel _mainViewViewModel;
         private ReminderConfigurationView _currentReminderConfigurationView;
-        
 
         public MainView()
         {
@@ -43,50 +31,18 @@ namespace Architecture_Reminder.Views
 
         private void OnReminderChanged(Models.Reminder reminder)
         {
-            RemsList.Items.Clear();
-            _countChildren = _mainViewViewModel.Reminders.Count();
-            for(int i=0; i<_countChildren; i++)
-            {
-                _currentReminderConfigurationView = new ReminderConfigurationView(_mainViewViewModel.Reminders.ElementAt(i));
-                RemsList.Items.Add(_currentReminderConfigurationView);
-            }
-            /*MainGrid.Children.Clear();
+            ListBoxMain.Items.Clear();
 
-            _countChildren = _mainViewViewModel.Reminders.Count();
+            _countChildren = _mainViewViewModel.Reminders.Count;
 
-            int _nRows = MainGrid.RowDefinitions.Count;
-
-            if (_nRows < _countChildren)
+            for (int i = 0; i < (_countChildren); i++)
             {
-                for (int i = 0; i < (_countChildren - _nRows); i++)
-                {
-                    MainGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(60) });
-                }
-            }
-            else if (_nRows > _countChildren)
-            {
-                for (int i = 0; i < ( _nRows - _countChildren); i++)
-                {
-                    MainGrid.RowDefinitions.RemoveAt(_countChildren-i);
-                }
-            }
-        */
-
-            /*
-           if (_countChildren > 0)
-            {
-                //MainGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(60) });
-            }
-            Console.WriteLine(_countChildren);
-            for (int i = 0; i < _countChildren; i++)
-            {
-                _currentReminderConfigurationView = new ReminderConfigurationView(_mainViewViewModel.Reminders.ElementAt(i));
-                MainGrid.Children.Add(_currentReminderConfigurationView);
-                Grid.SetRow(_currentReminderConfigurationView, i);
+                _currentReminderConfigurationView =
+                    new ReminderConfigurationView(_mainViewViewModel.Reminders.ElementAt(i));
+                ListBoxMain.Items.Add(_currentReminderConfigurationView);
             }
 
-            */
         }
-    }
 
+    }
 }

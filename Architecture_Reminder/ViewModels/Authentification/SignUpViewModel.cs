@@ -114,9 +114,9 @@ namespace Architecture_Reminder.ViewModels.Authentification
         private bool SignUpCanExecute(object obj)
         {
             return !String.IsNullOrEmpty(_login) &&
-                !String.IsNullOrEmpty(_password)&&
+                !String.IsNullOrEmpty(_password) &&
                 !String.IsNullOrEmpty(_firstName) &&
-                !String.IsNullOrEmpty(_lastName) && 
+                !String.IsNullOrEmpty(_lastName) &&
                 !String.IsNullOrEmpty(_email);
         }
 
@@ -137,7 +137,7 @@ namespace Architecture_Reminder.ViewModels.Authentification
                 MessageBox.Show("Failed to create user.\n" + e.Message);
                 return;
             }
-            MessageBox.Show("User with login "+_login + " is successfuly created!");
+            MessageBox.Show("User with login " + _login + " is successfuly created!");
             NavigationManager.Instance.Navigate(ModesEnum.Main);
         }
 
