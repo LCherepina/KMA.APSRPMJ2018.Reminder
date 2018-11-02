@@ -7,8 +7,8 @@ namespace Architecture_Reminder.Models
         public static int _id = 1;
         #region Fields
         private DateTime _dateTime;
-        private string _minutes;
-        private string _hours;
+        private int _minutes;
+        private int _hours;
         private string _text;
         private int _myId;
         #endregion
@@ -26,12 +26,12 @@ namespace Architecture_Reminder.Models
             get { return _dateTime.Date; }
             set { _dateTime = value; }
         }
-        public string RemTimeHour
+        public int RemTimeHour
         {
             get { return _hours; }
             set { _hours = value; }
         }
-        public string RemTimeMin
+        public int RemTimeMin
         {
             get { return _minutes; }
             set { _minutes = value; }
@@ -45,7 +45,7 @@ namespace Architecture_Reminder.Models
 
         #region Constructor
         //    public Reminder(DateTime dateTime, string text, User user)
-        public Reminder(DateTime dateTime, string hours, string minutes, string text)
+        public Reminder(DateTime dateTime, int hours, int minutes, string text)
         {
             _dateTime = dateTime.Date;
             _hours = hours;

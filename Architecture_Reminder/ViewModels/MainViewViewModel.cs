@@ -93,7 +93,7 @@ namespace Architecture_Reminder.ViewModels
         {
             //  Reminder reminder = new Reminder(DateTime.Today.Date, "", StationManager.CurrentUser);
 
-            Reminder reminder = new Reminder(DateTime.Today.Date, DateTime.Now.Hour + 1+"", DateTime.Now.Minute+"", "");
+            Reminder reminder = new Reminder(DateTime.Today.Date, DateTime.Now.Hour + 1, DateTime.Now.Minute, "");
             _reminders.Add(reminder);
             _selectedReminder = reminder;
             OnPropertyChanged();

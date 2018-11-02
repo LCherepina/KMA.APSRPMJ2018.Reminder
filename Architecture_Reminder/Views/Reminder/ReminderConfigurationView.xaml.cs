@@ -21,6 +21,7 @@ namespace Architecture_Reminder.Views.Reminder
     /// </summary>
     public partial class ReminderConfigurationView
     {
+        private ReminderConfigurationViewModel reminderModel;
         #region Fields
         private int _minutes = 59;
         private int _hours = 23;
@@ -32,32 +33,31 @@ namespace Architecture_Reminder.Views.Reminder
         {
             _id = reminder.MyId;
             InitializeComponent();
-            var reminderModel = new ReminderConfigurationViewModel(reminder);
-            FillTimeBox();
+           reminderModel = new ReminderConfigurationViewModel(reminder);
+           FillTimeBox();
 
             DataContext = reminderModel;
         }
 
         public void FillTimeBox()
         {
-
-             for (int i = 0; i <= _hours; i++)
+            string[] hours = new string[24];
+            string[] minutes = new string[60];
+            for (int i = 0; i < hours.Length; i++)
             {
-                
-                if (i < 10) ComboBoxHours.Items.Add("0" + i);
-                else ComboBoxHours.Items.Add(i+"");
-                
+                if (i < 10) hours[i] = "0" + i;
+                else hours[i] = i + "";
             }
-
-            for (int i = 0; i <= _minutes; i++)
+            for (int i = 0; i < minutes.Length; i++)
             {
-                if (i < 10) ComboBoxMinutes.Items.Add("0" + i);
-                else ComboBoxMinutes.Items.Add(i+"");
-
+                if (i < 10) minutes[i] = "0" + i;
+                else minutes[i] = i + "";
             }
+            ComboBoxHours.ItemsSource = hours;
+            ComboBoxMinutes.ItemsSource = minutes;
 
-            ComboBoxHours.SelectedItem = currentHour + 1;
-            ComboBoxMinutes.SelectedItem = currentMinute;
+            ComboBoxHours.SelectedIndex = currentHour;
+            ComboBoxMinutes.SelectedIndex = currentMinute;
 
         }
 
