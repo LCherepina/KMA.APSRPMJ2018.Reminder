@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Windows;
 using System.Windows.Input;
 using Architecture_Reminder.Models;
 using Architecture_Reminder.Tools;
@@ -114,7 +115,8 @@ namespace Architecture_Reminder.ViewModels
         {
 
             Console.WriteLine("Reminder");
-
+           
+            MessageBox.Show(DateTime.Now.ToString());
 
             OnPropertyChanged();
         }
