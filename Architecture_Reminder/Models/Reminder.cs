@@ -2,7 +2,7 @@
 
 namespace Architecture_Reminder.Models
 {
-    public class Reminder
+    public class Reminder : IComparable<Reminder>
     {
         public static int _id = 1;
         #region Fields
@@ -64,5 +64,19 @@ namespace Architecture_Reminder.Models
             return _text;
         }
 
+        public int CompareTo(Reminder other)
+        {
+            if (RemDate > other.RemDate)
+                return 1;
+            else if (RemDate < other.RemDate)
+                return -1;
+
+            if (RemTimeHour > other.RemTimeHour)
+                return 1;
+            else if (RemTimeHour < other.RemTimeHour)
+                return -1;
+
+            return 0;
+        }
     }
 }
