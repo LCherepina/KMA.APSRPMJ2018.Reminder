@@ -19,12 +19,10 @@
             <ColumnDefinition Width="100"></ColumnDefinition>
             <ColumnDefinition MinWidth="100"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <DatePicker  Name="DatePicker" Focusable = "False" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" DisplayDateStart="{x:Static sys:DateTime.Now}"   SelectedDate="{Binding RemDate , UpdateSourceTrigger=PropertyChanged}" >
-
-        </DatePicker>
-        <ComboBox Name="ComboBoxHours" Grid.Row="0" Grid.Column="1" Width="40" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" SelectedIndex="{Binding RemTimeHours}"></ComboBox>
+        <DatePicker  Name="DatePicker" Focusable = "False" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" DisplayDateStart="{x:Static sys:DateTime.Now}"   SelectedDate="{Binding RemDate , UpdateSourceTrigger=PropertyChanged}" ></DatePicker>
+        <ComboBox Name="ComboBoxHours" Grid.Row="0" Grid.Column="1" Width="40" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" ItemsSource="{Binding FillHours}" SelectedIndex="{Binding RemTimeHours}"></ComboBox>
         <Label Grid.Row="0" Content=":"  Grid.Column="1"  VerticalAlignment="Center" HorizontalAlignment="Center"></Label>
-        <ComboBox Name="ComboBoxMinutes" Grid.Row="0" Grid.Column="1" Width="40" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0" SelectedIndex="{Binding RemTimeMinutes}"></ComboBox>
+        <ComboBox Name="ComboBoxMinutes" Grid.Row="0" Grid.Column="1" Width="40" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0" ItemsSource="{Binding FillMinutes}" SelectedIndex="{Binding RemTimeMinutes}"></ComboBox>
         <TextBox Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" Margin="5,0,5,0 " Height="50"  TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" 
                  Text="{Binding RemText, UpdateSourceTrigger=PropertyChanged}"/>
 

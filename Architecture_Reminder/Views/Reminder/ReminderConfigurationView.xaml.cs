@@ -23,10 +23,6 @@ namespace Architecture_Reminder.Views.Reminder
     {
         private ReminderConfigurationViewModel reminderModel;
         #region Fields
-        private int _minutes = 59;
-        private int _hours = 23;
-        private int currentHour = DateTime.Now.Hour;
-        private int currentMinute = DateTime.Now.Minute;
         private int _id;
         #endregion
         public ReminderConfigurationView(Models.Reminder reminder)
@@ -34,33 +30,10 @@ namespace Architecture_Reminder.Views.Reminder
             _id = reminder.MyId;
             InitializeComponent();
            reminderModel = new ReminderConfigurationViewModel(reminder);
-           FillTimeBox();
-
             DataContext = reminderModel;
-        }
-
-        public void FillTimeBox()
-        {
-            string[] hours = new string[24];
-            string[] minutes = new string[60];
-            for (int i = 0; i < hours.Length; i++)
-            {
-                if (i < 10) hours[i] = "0" + i;
-                else hours[i] = i + "";
-            }
-            for (int i = 0; i < minutes.Length; i++)
-            {
-                if (i < 10) minutes[i] = "0" + i;
-                else minutes[i] = i + "";
-            }
-            ComboBoxHours.ItemsSource = hours;
-            ComboBoxMinutes.ItemsSource = minutes;
-
-            ComboBoxHours.SelectedIndex = currentHour;
-            ComboBoxMinutes.SelectedIndex = currentMinute;
-
         }
 
 
     }
+
 }

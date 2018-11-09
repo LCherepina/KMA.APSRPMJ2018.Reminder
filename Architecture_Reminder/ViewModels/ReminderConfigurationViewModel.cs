@@ -11,21 +11,13 @@ namespace Architecture_Reminder.ViewModels
         #region Fields
 
         private readonly Reminder _currentReminder;
+        private string[] _hours;
+        private string[] _minutes;
 
         #endregion
 
         #region Properties
 
-
-        public DateTime RemDateTimeStart
-        {
-            get { return DateTime.Today.Date; }
-            set
-            {
-                _currentReminder.RemDate = value;
-                OnPropertyChanged();
-            }
-        }
 
         public DateTime RemDate
         {
@@ -42,8 +34,20 @@ namespace Architecture_Reminder.ViewModels
             get { return _currentReminder.RemTimeHour; }
             set
             {
-                _currentReminder.RemTimeHour = value;
-                OnPropertyChanged();
+               if (((value == DateTime.Now.Hour && _currentReminder.RemTimeMin > DateTime.Now.Minute )
+                                       || (value > DateTime.Now.Hour) ))
+               { 
+
+                    _currentReminder.RemTimeHour = value;
+                    OnPropertyChanged();
+                   // Console.WriteLine(value);
+                }
+               else
+               {
+                   _currentReminder.RemTimeHour = _currentReminder.RemTimeHour;
+                   OnPropertyChanged();
+                }
+                
             }
         }
         public int RemTimeMinutes
@@ -51,7 +55,12 @@ namespace Architecture_Reminder.ViewModels
             get { return _currentReminder.RemTimeMin; }
             set
             {
-                _currentReminder.RemTimeMin = value;
+                if (value > DateTime.Now.Minute && _currentReminder.RemDate >= DateTime.Today &&
+                    _currentReminder.RemTimeHour > DateTime.Now.Hour)
+                {
+                    _currentReminder.RemTimeMin = value;
+                   // Console.WriteLine(value);   
+                }
                 OnPropertyChanged();
             }
         }
@@ -63,6 +72,35 @@ namespace Architecture_Reminder.ViewModels
             {
                 _currentReminder.RemText = value;
                 OnPropertyChanged();
+            }
+        }
+        public string[] FillHours
+        {
+            get
+            {
+                _hours = new string[24];
+                for (int i = 0; i < _hours.Length; i++)
+                {
+                    if (i < 10) _hours[i] = "0" + i;
+                    else _hours[i] = i + "";
+                }
+
+                return _hours;
+            }
+
+        }
+        public string[] FillMinutes
+        {
+            get
+            {
+                _minutes = new string[60];
+                for (int i = 0; i < _minutes.Length; i++)
+                {
+                    if (i < 10) _minutes[i] = "0" + i;
+                    else _minutes[i] = i + "";
+                }
+
+                return _minutes;
             }
         }
 
@@ -91,7 +129,9 @@ namespace Architecture_Reminder.ViewModels
         }
 
         #endregion
-
         #endregion
+
+
+
     }
 }

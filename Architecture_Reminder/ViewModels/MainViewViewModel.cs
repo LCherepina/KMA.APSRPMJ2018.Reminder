@@ -70,6 +70,8 @@ namespace Architecture_Reminder.ViewModels
 
             }
         }
+
+        public Reminder SelectedReminder { get => _selectedReminder; set => _selectedReminder = value; }
         #endregion
 
         #region Constructor
@@ -83,7 +85,7 @@ namespace Architecture_Reminder.ViewModels
 
         private void OnPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs)
         {
-            OnReminderChanged(_selectedReminder);
+            OnReminderChanged(SelectedReminder);
         }
         private void FillReminder()
         {
@@ -93,10 +95,9 @@ namespace Architecture_Reminder.ViewModels
         private void AddReminderExecute(object o)
         {
             //  Reminder reminder = new Reminder(DateTime.Today.Date, "", StationManager.CurrentUser);
-
-            Reminder reminder = new Reminder(DateTime.Today.Date, DateTime.Now.Hour + 1, DateTime.Now.Minute, "");
+            Reminder reminder = new Reminder(DateTime.Today.Date, DateTime.Now.Hour+1, DateTime.Now.Minute, "");
             _reminders.Add(reminder);
-            _selectedReminder = reminder;
+            SelectedReminder = reminder;
             _reminders.Sort();
             OnPropertyChanged();
         }
@@ -106,7 +107,6 @@ namespace Architecture_Reminder.ViewModels
 
             if (_reminders.Count == 0) return;
             if (SelectedReminderIndex < 0) return;
-            _mainView = new MainView();
             _reminders.RemoveAt(SelectedReminderIndex);
             OnPropertyChanged();
 
@@ -114,7 +114,7 @@ namespace Architecture_Reminder.ViewModels
 
         private void RunReminderExecute(object o)
         {
-
+            
             Console.WriteLine("Reminder");
            
             MessageBox.Show(DateTime.Now.ToString());
