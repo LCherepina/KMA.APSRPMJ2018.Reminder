@@ -2,6 +2,7 @@
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Threading;
 using KMA.APZRPMJ2018.WalletSimulator.Properties;
 
 namespace Architecture_Reminder.ViewModels
@@ -13,6 +14,7 @@ namespace Architecture_Reminder.ViewModels
         private readonly Reminder _currentReminder;
         private string[] _hours;
         private string[] _minutes;
+        private ValueType val;
 
         #endregion
 
@@ -34,8 +36,8 @@ namespace Architecture_Reminder.ViewModels
             get { return _currentReminder.RemTimeHour; }
             set
             {
-               if (((value == DateTime.Now.Hour && _currentReminder.RemTimeMin > DateTime.Now.Minute )
-                                       || (value > DateTime.Now.Hour) ))
+               if ((((value == DateTime.Now.Hour && _currentReminder.RemTimeMin > DateTime.Now.Minute )
+                                       || (value > DateTime.Now.Hour ) ) && _currentReminder.RemDate == DateTime.Today) || _currentReminder.RemDate > DateTime.Today)
                { 
 
                     _currentReminder.RemTimeHour = value;
@@ -55,13 +57,27 @@ namespace Architecture_Reminder.ViewModels
             get { return _currentReminder.RemTimeMin; }
             set
             {
-                if (value > DateTime.Now.Minute && _currentReminder.RemDate >= DateTime.Today &&
-                    _currentReminder.RemTimeHour > DateTime.Now.Hour)
+                var oldTime = _currentReminder.RemTimeMin;
+                if(((( _currentReminder.RemTimeHour == DateTime.Now.Hour && value > DateTime.Now.Minute) || (_currentReminder.RemTimeHour > DateTime.Now.Hour))
+                   && _currentReminder.RemDate == DateTime.Today) || _currentReminder.RemDate > DateTime.Today)
                 {
                     _currentReminder.RemTimeMin = value;
-                   // Console.WriteLine(value);   
+                    OnPropertyChanged();
+                    // Console.WriteLine(value);   
                 }
-                OnPropertyChanged();
+               else
+               {
+                   _currentReminder.RemTimeMin = oldTime;
+                   OnPropertyChanged();
+                }
+               
+           /*     if (value < DateTime.Now.Minute && _currentReminder.RemDate < DateTime.Today &&
+                      _currentReminder.RemTimeHour <= DateTime.Now.Hour)
+                {
+                    Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() => RemTimeMinutes = oldTime),
+                            DispatcherPriority.ApplicationIdle);
+                }
+                */
             }
         }
 

@@ -71,7 +71,11 @@ namespace Architecture_Reminder.ViewModels
             }
         }
 
-        public Reminder SelectedReminder { get => _selectedReminder; set => _selectedReminder = value; }
+        public Reminder SelectedReminder
+        {
+            get { return _selectedReminder; }
+            set { _selectedReminder = value; }
+        }
         #endregion
 
         #region Constructor
