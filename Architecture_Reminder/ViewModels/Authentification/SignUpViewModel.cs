@@ -125,19 +125,14 @@ namespace Architecture_Reminder.ViewModels.Authentification
             try
             {
                 var addr = new System.Net.Mail.MailAddress(_email);
-                /*(addr.Address != _email)
-                {
-                    MessageBox.Show("Sign up email is not valid.\n");
-                    return;
-                }*/
-                if (DBManager.UserExist(_login))
-                {
-                    MessageBox.Show("User with login " + _login + " already exist.\n");
-                    return;
-                }
+                //if (DBManager.UserExist(_login))
+                //{
+                  //  MessageBox.Show("User with login " + _login + " already exist.\n");
+                   // return;
+                //}
             }catch(Exception e)
             {
-                MessageBox.Show("Failed to validate data.\n" + e.Message);
+                MessageBox.Show("Failed to validate data. " + e.Message);
                 return;
             }
             
@@ -149,7 +144,7 @@ namespace Architecture_Reminder.ViewModels.Authentification
             }
             catch (Exception e)
             {
-                MessageBox.Show("Failed to create user.\n" + e.Message);
+                MessageBox.Show("Failed to create user." + e.Message);
                 return;
             }
             MessageBox.Show("User with login " + _login + " is successfuly created!");

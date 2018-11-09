@@ -23,6 +23,9 @@ namespace Architecture_Reminder.Views.Reminder
     {
         private ReminderConfigurationViewModel reminderModel;
         #region Fields
+
+        private int currentHour = DateTime.Now.Hour;
+        private int currentMinute = DateTime.Now.Minute;
         private int _id;
         #endregion
         public ReminderConfigurationView(Models.Reminder reminder)
@@ -33,7 +36,5 @@ namespace Architecture_Reminder.Views.Reminder
             DataContext = reminderModel;
         }
 
-
     }
-
 }
