@@ -2,11 +2,7 @@
 using Architecture_Reminder.Models;
 using Architecture_Reminder.Tools;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
@@ -128,7 +124,26 @@ namespace Architecture_Reminder.ViewModels.Authentification
         {
             try
             {
-                var user = new User(_login, _password);
+                var addr = new System.Net.Mail.MailAddress(_email);
+                /*(addr.Address != _email)
+                {
+                    MessageBox.Show("Sign up email is not valid.\n");
+                    return;
+                }*/
+                if (DBManager.UserExist(_login))
+                {
+                    MessageBox.Show("User with login " + _login + " already exist.\n");
+                    return;
+                }
+            }catch(Exception e)
+            {
+                MessageBox.Show("Failed to validate data.\n" + e.Message);
+                return;
+            }
+            
+            try
+            {
+                var user = new User(_login, _password, _firstName, _lastName, _email);
                 DBManager.AddUser(user);
                 StationManager.CurrentUser = user;
             }

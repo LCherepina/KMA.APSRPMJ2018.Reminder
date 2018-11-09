@@ -72,8 +72,15 @@ namespace Architecture_Reminder.Models
                 return -1;
 
             if (RemTimeHour > other.RemTimeHour)
-                return 1;
+            {
+                return 1; 
+            }
             else if (RemTimeHour < other.RemTimeHour)
+                return -1;
+
+            if (RemTimeMin > other.RemTimeMin)
+                return 1;
+            else if (RemTimeMin < other.RemTimeMin)
                 return -1;
 
             return 0;
