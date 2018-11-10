@@ -13,6 +13,7 @@ namespace Architecture_Reminder.Views
     {
         private int _countChildren;
         private MainViewViewModel _mainViewViewModel;
+        //private ReminderConfigurationViewModel _reminderConfigurationModel;
         private ReminderConfigurationView _currentReminderConfigurationView;
 
         public MainView()
@@ -26,6 +27,8 @@ namespace Architecture_Reminder.Views
             Visibility = Visibility.Visible;
             _mainViewViewModel = new MainViewViewModel();
             _mainViewViewModel.ReminderChanged += OnReminderChanged;
+            //_reminderConfigurationModel = new ReminderConfigurationViewModel();
+            //_reminderConfigurationModel.ReminderChanged += OnReminderChanged;
             DataContext = _mainViewViewModel;
         }
 

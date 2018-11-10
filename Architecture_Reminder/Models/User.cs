@@ -60,7 +60,7 @@ namespace Architecture_Reminder.Models
         public List<Reminder> Reminders
         {
             get { return _reminders; }
-            private set { _reminders = value; }
+            //set { _reminders = value; }
         }
         #endregion
 
