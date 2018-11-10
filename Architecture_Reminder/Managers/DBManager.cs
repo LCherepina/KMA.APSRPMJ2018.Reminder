@@ -14,7 +14,7 @@ namespace Architecture_Reminder.Managers
 
         static DBManager()
         {
-            Users = SerializationManager.Deserialize<List<User>>(FileFolderHelper.StorageFilePath);
+            Users = SerializationManager.Deserialize<List<User>>(FileFolderHelper.StorageFilePath) ?? new List<User>();
         }
 
         public static bool UserExist(string login)

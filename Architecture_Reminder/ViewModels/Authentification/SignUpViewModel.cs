@@ -138,7 +138,7 @@ namespace Architecture_Reminder.ViewModels.Authentification
             
             try
             {
-                var user = new User(_login, _password, _firstName, _lastName, _email);
+                User user = new User(_login, _password, _firstName, _lastName, _email);
                 DBManager.AddUser(user);
                 StationManager.CurrentUser = user;
             }

@@ -99,19 +99,20 @@ namespace Architecture_Reminder.ViewModels
         private void AddReminderExecute(object o)
         {
             //  Reminder reminder = new Reminder(DateTime.Today.Date, "", StationManager.CurrentUser);
+            List<Reminder> rems = Reminders;
             Reminder reminder = new Reminder(DateTime.Today.Date, DateTime.Now.Hour+1, DateTime.Now.Minute, "");
-            Reminders.Add(reminder);
+            StationManager.CurrentUser.Reminders.Add(reminder);
             SelectedReminder = reminder;
-            Reminders.Sort();
+            StationManager.CurrentUser.Reminders.Sort();
             OnPropertyChanged();
         }
 
         private void DeleteReminderExecute(KeyEventArgs args)
         {
 
-            if (Reminders.Count == 0) return;
+            if (StationManager.CurrentUser.Reminders.Count == 0) return;
             if (SelectedReminderIndex < 0) return;
-            Reminders.RemoveAt(SelectedReminderIndex);
+            StationManager.CurrentUser.Reminders.RemoveAt(SelectedReminderIndex);
             OnPropertyChanged();
 
         }

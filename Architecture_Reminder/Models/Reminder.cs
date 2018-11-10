@@ -2,6 +2,7 @@
 
 namespace Architecture_Reminder.Models
 {
+    [Serializable]
     public class Reminder : IComparable<Reminder>
     {
         public static int _id = 1;

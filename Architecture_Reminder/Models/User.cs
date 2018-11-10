@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Architecture_Reminder.Models
 {
-
+    [Serializable]
     public class User
     {
 
@@ -70,6 +70,10 @@ namespace Architecture_Reminder.Models
         {
             _login = login;
             SetPassword(password);
+            _firstName = firstName;
+            _lastName = lastName;
+            _email = email;
+            _reminders = new List<Reminder>();
         }
 
         private User()
