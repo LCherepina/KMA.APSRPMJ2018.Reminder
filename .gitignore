@@ -1,2 +1,9 @@
 
 *.lock
+Architecture_Reminder/MainWindow.xaml.cs
+Architecture_Reminder/MainWindow.xaml
+Architecture_Reminder/bin/Debug/Architecture_Reminder.vshost.exe.manifest
+Architecture_Reminder/bin/Debug/Architecture_Reminder.vshost.exe.config
+.vs/Architecture_Reminder/v15/Server/sqlite3/storage.ide-wal
+.vs/Architecture_Reminder/v15/Server/sqlite3/storage.ide-shm
+.vs/Architecture_Reminder/v15/Server/sqlite3/storage.ide

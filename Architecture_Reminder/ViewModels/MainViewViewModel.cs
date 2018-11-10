@@ -9,7 +9,6 @@ using Architecture_Reminder.Models;
 using Architecture_Reminder.Tools;
 using Architecture_Reminder.Views;
 using KMA.APZRPMJ2018.WalletSimulator.Properties;
-using Architecture_Reminder.Managers;
 
 namespace Architecture_Reminder.ViewModels
 {
@@ -19,8 +18,8 @@ namespace Architecture_Reminder.ViewModels
 
         private int _indexSelected;
         private Reminder _selectedReminder;
-        //private MainView _mainView;
-        //private List<Reminder> _reminders;
+        private MainView _mainView;
+        private List<Reminder> _reminders;
 
         #region Commands
         private ICommand _addReminderCommand;
@@ -59,10 +58,7 @@ namespace Architecture_Reminder.ViewModels
 
         public List<Reminder> Reminders
         {
-            get {
-                //return _reminders; 
-                return StationManager.CurrentUser.Reminders;
-            }
+            get { return _reminders; }
         }
 
         public int SelectedReminderIndex
@@ -75,14 +71,18 @@ namespace Architecture_Reminder.ViewModels
             }
         }
 
-        public Reminder SelectedReminder { get { return _selectedReminder; } set { _selectedReminder = value; } }
+        public Reminder SelectedReminder
+        {
+            get { return _selectedReminder; }
+            set { _selectedReminder = value; }
+        }
         #endregion
 
         #region Constructor
 
         public MainViewViewModel()
         {
-            //FillReminder();
+            FillReminder();
             PropertyChanged += OnPropertyChanged;
         }
         #endregion
@@ -91,27 +91,27 @@ namespace Architecture_Reminder.ViewModels
         {
             OnReminderChanged(SelectedReminder);
         }
-        //private void FillReminder()
-        //{
-            //_reminders = new List<Reminder>();
+        private void FillReminder()
+        {
+            _reminders = new List<Reminder>();
 
-        //}
+        }
         private void AddReminderExecute(object o)
         {
             //  Reminder reminder = new Reminder(DateTime.Today.Date, "", StationManager.CurrentUser);
             Reminder reminder = new Reminder(DateTime.Today.Date, DateTime.Now.Hour+1, DateTime.Now.Minute, "");
-            Reminders.Add(reminder);
+            _reminders.Add(reminder);
             SelectedReminder = reminder;
-            Reminders.Sort();
+            _reminders.Sort();
             OnPropertyChanged();
         }
 
         private void DeleteReminderExecute(KeyEventArgs args)
         {
 
-            if (Reminders.Count == 0) return;
+            if (_reminders.Count == 0) return;
             if (SelectedReminderIndex < 0) return;
-            Reminders.RemoveAt(SelectedReminderIndex);
+            _reminders.RemoveAt(SelectedReminderIndex);
             OnPropertyChanged();
 
         }

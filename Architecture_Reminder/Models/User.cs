@@ -11,7 +11,6 @@ namespace Architecture_Reminder.Models
     {
 
         #region Fields
-        private Guid _guid;
         private string _login;
         private string _password;
         private string _firstName;
@@ -21,17 +20,7 @@ namespace Architecture_Reminder.Models
         #endregion
 
         #region Properties
-        public Guid Guid
-        {
-            get
-            {
-                return _guid;
-            }
-            private set
-            {
-                _guid = value;
-            }
-        }
+        
         public string Login
         {
             get { return _login; }
