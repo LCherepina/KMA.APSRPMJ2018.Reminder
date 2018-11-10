@@ -70,6 +70,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Managers\SerialazationManager.cs" />
     <Compile Include="Models\Reminder.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Tools\Controls\LabelAndPasswordControl.xaml.cs">
@@ -79,7 +80,9 @@
       <DependentUpon>LabelAndTextControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Tools\Encrypting.cs" />
+    <Compile Include="Tools\FileFolderHelper.cs" />
     <Compile Include="Tools\IContentWindow.cs" />
+    <Compile Include="Tools\Logger.cs" />
     <Compile Include="Tools\NavigationModel.cs" />
     <Compile Include="Tools\PasswordBoxAssistant.cs" />
     <Compile Include="Tools\RelayCommand.cs" />
