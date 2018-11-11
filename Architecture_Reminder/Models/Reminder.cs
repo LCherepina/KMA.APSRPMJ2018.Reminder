@@ -46,7 +46,7 @@ namespace Architecture_Reminder.Models
 
         #region Constructor
         //    public Reminder(DateTime dateTime, string text, User user)
-        public Reminder(DateTime dateTime, int hours, int minutes, string text)
+        public Reminder(DateTime dateTime, int hours, int minutes, string text, User user)
         {
             _dateTime = dateTime.Date;
             _hours = hours;
@@ -54,7 +54,8 @@ namespace Architecture_Reminder.Models
             _text = text;
             _myId = _id;
             _id++;
-            //  user.Reminders.Add(this);
+            user.Reminders.Add(this);
+            user.Reminders.Sort();
         }
 
         private Reminder() { }

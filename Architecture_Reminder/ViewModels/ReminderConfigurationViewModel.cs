@@ -130,8 +130,12 @@ namespace Architecture_Reminder.ViewModels
             _currentReminder = reminder;
         }
 
-        #endregion
+        public ReminderConfigurationViewModel()
+        {
+        }
 
+        #endregion
+        
         #region EventsAndHandlers
 
         #region PropertyChanged
@@ -146,8 +150,6 @@ namespace Architecture_Reminder.ViewModels
 
         #endregion
         #endregion
-
-
 
     }
 }
