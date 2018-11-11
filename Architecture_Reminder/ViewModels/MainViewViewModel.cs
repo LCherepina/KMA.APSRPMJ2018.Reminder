@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
@@ -163,12 +164,36 @@ namespace Architecture_Reminder.ViewModels
 
         private void RunReminderExecute(object o)
         {
-            
-            Console.WriteLine("Reminder");
-           
-            MessageBox.Show(DateTime.Now.ToString());
 
-            OnPropertyChanged();
+           Thread myThread = new Thread(new ThreadStart(CheckIfRun));
+            myThread.IsBackground = true;
+            myThread.Start();
+           // OnPropertyChanged();
+        }
+
+        private void CheckIfRun()
+        {
+            if (Reminders[0].RemDate == DateTime.Today)
+            {
+                if (Reminders[0].RemTimeHour == DateTime.Now.Hour)
+                {
+                    int minRemain = (Reminders[0].RemTimeMin - DateTime.Now.Minute) ;
+                    TimeSpan interval = new TimeSpan(0, minRemain, -10);
+
+                    Thread.Sleep(interval);
+                    Console.WriteLine("Reminder");
+
+                    
+                    MessageBox.Show(Reminders[0].RemTimeHour + " : " + Reminders[0].RemTimeMin + " " + Reminders[0].ToString());
+                    Reminders.RemoveAt(0);
+
+                    DBManager.UpdateUser(StationManager.CurrentUser);
+                    Reminders.Sort();
+
+                    
+                }
+            }
+           // OnPropertyChanged();
         }
 
         #region EventsAndHandlers
