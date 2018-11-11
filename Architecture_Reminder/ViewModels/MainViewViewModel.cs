@@ -11,6 +11,7 @@ using Architecture_Reminder.Views;
 using KMA.APZRPMJ2018.WalletSimulator.Properties;
 using Architecture_Reminder.Managers;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Architecture_Reminder.ViewModels
 {
@@ -101,24 +102,46 @@ namespace Architecture_Reminder.ViewModels
                 SelectedReminder = _reminders[0];*/
         }
 
-        private void AddReminderExecute(object o)
+        private async void AddReminderExecute(object o)
         {
+            LoaderManager.Instance.ShowLoader();
+            var result = await Task.Run(() =>
+            {
+                Thread.Sleep(300);
+                Reminder reminder = new Reminder(DateTime.Today.Date, DateTime.Now.Hour + 1, DateTime.Now.Minute, "",
+                    StationManager.CurrentUser);
+                SelectedReminder = reminder;
+                //_reminders.Add(reminder);
+                
+                return true;
 
-            Reminder reminder = new Reminder(DateTime.Today.Date, DateTime.Now.Hour+1, DateTime.Now.Minute, "", StationManager.CurrentUser);
-            SelectedReminder = reminder;
-            //_reminders.Add(reminder);
+            });
+            LoaderManager.Instance.HideLoader();
             OnPropertyChanged();
+
         }
 
-        private void DeleteReminderExecute(KeyEventArgs args)
+        private async void DeleteReminderExecute(KeyEventArgs args)
         {
-            if (Reminders.Count == 0) return;
-            if (SelectedReminderIndex < 0) return;
-            Reminders.RemoveAt(SelectedReminderIndex);
-            DBManager.UpdateUser(StationManager.CurrentUser);
-            Reminders.Sort();
-            //FillReminders();
-            OnPropertyChanged();
+            LoaderManager.Instance.ShowLoader();
+            var result = await Task.Run(() =>
+            {
+                if (Reminders.Count == 0) return false;
+                if (SelectedReminderIndex < 0) return false;
+                Reminders.RemoveAt(SelectedReminderIndex);
+                DBManager.UpdateUser(StationManager.CurrentUser);
+                Reminders.Sort();
+                //FillReminders();
+               
+                return true;
+            });
+            LoaderManager.Instance.HideLoader();
+             OnPropertyChanged();
+        }
+
+        private async void LogOutExecute(object obj)
+        {
+
         }
 
         private void RunReminderExecute(object o)

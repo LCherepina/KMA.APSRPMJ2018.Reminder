@@ -20,11 +20,13 @@
                     <RowDefinition Height="70"></RowDefinition>
                     <RowDefinition Height="70"></RowDefinition>
                     <RowDefinition Height="70"></RowDefinition>
+                    <RowDefinition Height="70"></RowDefinition>
 
                 </Grid.RowDefinitions>
                 <Button Content="Add" FontWeight="Bold" Command="{Binding AddReminderCommand}"  Grid.Row="0" Grid.Column="0" Margin="6"></Button>
                 <Button Content="Delete" FontWeight="Bold" Command="{Binding DeleteReminderCommand}" Grid.Row="1" Grid.Column="0" Margin="6"></Button>
                 <Button Content="Run" FontWeight="Bold" Command="{Binding RunReminderCommand}"  Grid.Row="2" Grid.Column="0" Margin="6"></Button>
+                <Button Content="Log Out" FontWeight="Bold" Command="{Binding LogOutCommand}"  Grid.Row="3" Grid.Column="0" Margin="6"></Button>
 
             </Grid>
 
