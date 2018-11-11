@@ -141,7 +141,9 @@ namespace Architecture_Reminder.ViewModels
 
         private async void LogOutExecute(object obj)
         {
-
+            LoaderManager.Instance.ShowLoader();
+            var result = await Task.Run(() => { return true; });
+            LoaderManager.Instance.HideLoader();
         }
 
         private void RunReminderExecute(object o)
