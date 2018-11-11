@@ -3,6 +3,7 @@ using Architecture_Reminder.Models;
 using Architecture_Reminder.Tools;
 using System;
 using System.ComponentModel;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
@@ -83,38 +84,49 @@ namespace Architecture_Reminder.ViewModels.Authentification
             return !String.IsNullOrWhiteSpace(_login) && !String.IsNullOrWhiteSpace(_password);
         }
 
-        private void SignInExecute(object obj)
+        private async void SignInExecute(object obj)
+
         {
-            User currentUser;
-            try
+            LoaderManager.Instance.ShowLoader();
+            var result = await Task.Run(() =>
             {
-                currentUser = DBManager.GetUserByLogin(_login);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Failed to get user with login +" + _login + "./n" + e.Message);
-                return;
-            }
-            if (currentUser == null)
-            {
-                MessageBox.Show("User with login " + _login + " doesn't exist!");
-                return;
-            }
-            try
-            {
-                if (!currentUser.CheckPassword(_password))
+                User currentUser;
+                try
                 {
-                    MessageBox.Show("Wrong password!");
-                    return;
+                    currentUser = DBManager.GetUserByLogin(_login);
                 }
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Failed to validate password!/n" + e.Message);
-                return;
-            }
-            StationManager.CurrentUser = currentUser;
-            NavigationManager.Instance.Navigate(ModesEnum.Main);
+                catch (Exception e)
+                {
+                    MessageBox.Show("Failed to get user with login +" + _login + "./n" + e.Message);
+                    return false;
+                }
+
+                if (currentUser == null)
+                {
+                    MessageBox.Show("User with login " + _login + " doesn't exist!");
+                    return false;
+                }
+
+                try
+                {
+                    if (!currentUser.CheckPassword(_password))
+                    {
+                        MessageBox.Show("Wrong password!");
+                        return false;
+                    }
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Failed to validate password!/n" + e.Message);
+                    return false;
+                }
+
+                StationManager.CurrentUser = currentUser;
+                return true;
+            });
+            LoaderManager.Instance.HideLoader();
+            if(result)
+                NavigationManager.Instance.Navigate(ModesEnum.Main);
         }
         private void SignUpExecute(object obj)
         {

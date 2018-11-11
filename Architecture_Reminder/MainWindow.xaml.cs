@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using Architecture_Reminder.Tools;
 using Architecture_Reminder.Managers;
+using Architecture_Reminder.ViewModels;
 
 namespace Architecture_Reminder
 {
@@ -15,6 +16,9 @@ namespace Architecture_Reminder
             InitializeComponent();
             var navigationModel = new NavigationModel(this);
             NavigationManager.Instance.Initialize(navigationModel);
+            MainWindowViewModel mainWindowViewModel = new MainWindowViewModel();
+            DataContext = mainWindowViewModel;
+
             navigationModel.Navigate(ModesEnum.SignIn);
         }
 
