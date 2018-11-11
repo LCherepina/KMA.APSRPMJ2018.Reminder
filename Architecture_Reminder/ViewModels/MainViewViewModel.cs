@@ -146,7 +146,7 @@ namespace Architecture_Reminder.ViewModels
                 return true;
             });
             LoaderManager.Instance.HideLoader();
-             OnPropertyChanged();
+            OnPropertyChanged();
         }
 
         private async void LogOutExecute(object obj)
@@ -155,6 +155,7 @@ namespace Architecture_Reminder.ViewModels
             var result = await Task.Run(() =>
             {
                 Thread.Sleep(100);
+                StationManager.CurrentUser = null;
                 return true;
             });
             LoaderManager.Instance.HideLoader();
@@ -168,7 +169,7 @@ namespace Architecture_Reminder.ViewModels
            Thread myThread = new Thread(new ThreadStart(CheckIfRun));
             myThread.IsBackground = true;
             myThread.Start();
-           // OnPropertyChanged();
+            OnPropertyChanged();
         }
 
         private void CheckIfRun()
@@ -178,7 +179,7 @@ namespace Architecture_Reminder.ViewModels
                 if (Reminders[0].RemTimeHour == DateTime.Now.Hour)
                 {
                     int minRemain = (Reminders[0].RemTimeMin - DateTime.Now.Minute) ;
-                    TimeSpan interval = new TimeSpan(0, minRemain, -10);
+                    TimeSpan interval = new TimeSpan(0, minRemain, -20);
 
                     Thread.Sleep(interval);
                     Console.WriteLine("Reminder");
