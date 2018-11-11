@@ -3,6 +3,7 @@ using Architecture_Reminder.Models;
 using Architecture_Reminder.Tools;
 using System;
 using System.ComponentModel;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -90,6 +91,7 @@ namespace Architecture_Reminder.ViewModels.Authentification
             LoaderManager.Instance.ShowLoader();
             var result = await Task.Run(() =>
             {
+                Thread.Sleep(100);
                 User currentUser;
                 try
                 {

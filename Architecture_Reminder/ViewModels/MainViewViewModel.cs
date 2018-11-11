@@ -28,6 +28,7 @@ namespace Architecture_Reminder.ViewModels
         private ICommand _addReminderCommand;
         private ICommand _deleteReminderCommand;
         private ICommand _runReminderCommand;
+        private ICommand _logOutCommand;
         #endregion
         #endregion
 
@@ -54,6 +55,14 @@ namespace Architecture_Reminder.ViewModels
             get
             {
                 return _runReminderCommand ?? (_runReminderCommand = new RelayCommand<object>(RunReminderExecute));
+            }
+        }
+
+        public ICommand LogOutCommand
+        {
+            get
+            {
+                return _logOutCommand ?? (_logOutCommand = new RelayCommand<object>(LogOutExecute));
             }
         }
 
@@ -142,8 +151,14 @@ namespace Architecture_Reminder.ViewModels
         private async void LogOutExecute(object obj)
         {
             LoaderManager.Instance.ShowLoader();
-            var result = await Task.Run(() => { return true; });
+            var result = await Task.Run(() =>
+            {
+                Thread.Sleep(100);
+                return true;
+            });
             LoaderManager.Instance.HideLoader();
+            if (result)
+                NavigationManager.Instance.Navigate(ModesEnum.SignIn);
         }
 
         private void RunReminderExecute(object o)
