@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using Architecture_Reminder.Adapter;
 using Architecture_Reminder.Models;
-using Architecture_Reminder.Tools;
 
 namespace Architecture_Reminder.Managers
 {
     public class DBManager
     {
+        /*
         private static readonly List<User> Users = new List<User>();
 
         static DBManager()
@@ -56,5 +53,49 @@ namespace Architecture_Reminder.Managers
         {
             SaveChanges();
         }
+        */
+
+        public static void UpdateUser(User currentUser)
+        {
+            SaveChanges();
+        }
+        private static void SaveChanges()
+        {
+            //return EntityWrapper.();
+        }
+
+        public static bool UserExists(string login)
+        {
+            return EntityWrapper.UserExists(login);
+        }
+
+        public static User GetUserByLogin(string login)
+        {
+            return EntityWrapper.GetUserByLogin(login);
+        }
+
+        public static void AddUser(User user)
+        {
+            EntityWrapper.AddUser(user);
+        }
+
+        internal static User CheckCachedUser(User userCandidate)
+        {
+            var userInStorage = EntityWrapper.GetUserByGuid(userCandidate.Guid);
+            if (userInStorage != null && userInStorage.CheckPassword(userCandidate))
+                return userInStorage;
+            return null;
+        }
+
+        public static void DeleteReminder(Reminder selectedReminder)
+        {
+            EntityWrapper.DeleteReminder(selectedReminder);
+        }
+
+        public static void AddReminder(Reminder reminder)
+        {
+            EntityWrapper.DeleteReminder(reminder);
+        }
+
     }
 }
