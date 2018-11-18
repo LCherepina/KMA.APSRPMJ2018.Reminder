@@ -93,6 +93,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Reminder.cs" />
+    <Compile Include="Models\ReminderUIModel.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\Annotations1.cs" />
     <Compile Include="Tools\Controls\LabelAndPasswordControl.xaml.cs">

@@ -121,8 +121,12 @@ namespace Architecture_Reminder.ViewModels
                 Reminder reminder = new Reminder(DateTime.Today.Date, DateTime.Now.Hour + 1, DateTime.Now.Minute, "",
                     StationManager.CurrentUser);
                 SelectedReminder = reminder;
+                DBManager.AddReminder(reminder);
+             //   var remindertUIModel = new ReminderUIModel(reminder);
+             //   _.Add(walletUIModel);
+           //     _selectedWallet = walletUIModel;
                 //_reminders.Add(reminder);
-                
+
                 return true;
 
             });
@@ -139,7 +143,7 @@ namespace Architecture_Reminder.ViewModels
                 if (Reminders.Count == 0) return false;
                 if (SelectedReminderIndex < 0) return false;
                 Reminders.RemoveAt(SelectedReminderIndex);
-                DBManager.UpdateUser(StationManager.CurrentUser);
+                DBManager.DeleteReminder(SelectedReminder);
                 Reminders.Sort();
                 //FillReminders();
                

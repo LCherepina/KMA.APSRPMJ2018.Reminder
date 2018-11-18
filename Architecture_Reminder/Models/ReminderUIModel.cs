@@ -1,11 +1,12 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Architecture_Reminder.Annotations;
 using Architecture_Reminder.Models;
 
 namespace Architecture_Reminder.Models
 {
-    public class UIModel : INotifyPropertyChanged
+    public class ReminderUIModel : INotifyPropertyChanged
     {
         #region Fields
         private Reminder _reminder;
@@ -22,22 +23,43 @@ namespace Architecture_Reminder.Models
             }
         }
 
-        public string Title
+        public DateTime Date
         {
-            get { return _reminder.Title; }
+            get { return _reminder.RemDate; }
             set
             {
-                _reminder.Title = value;
+                _reminder.RemDate = value;
                 OnPropertyChanged();
             }
         }
-        public long TotalIncome
+        public int TimeMin
         {
-            get { return _reminder.TotalIncome; }
+            get { return _reminder.RemTimeMin; }
+            set
+            {
+                _reminder.RemTimeMin = value;
+                OnPropertyChanged();
+            }
         }
-        public long TotalOutcome
+        public int TimeHour
         {
-            get { return _reminder.TotalOutcome; }
+            get { return _reminder.RemTimeHour; }
+            set
+            {
+                _reminder.RemTimeHour = value;
+                OnPropertyChanged();
+            }
+
+        }
+
+        public string Text
+        {
+            get { return _reminder.RemText;}
+            set {
+                _reminder.RemText = value;
+                OnPropertyChanged();
+            }
+
         }
 
         public Guid Guid
@@ -47,7 +69,7 @@ namespace Architecture_Reminder.Models
 
         #endregion
 
-        public UIModel(Reminder reminder)
+        public ReminderUIModel(Reminder reminder)
         {
             _reminder = reminder;
         }

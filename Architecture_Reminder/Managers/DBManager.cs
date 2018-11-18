@@ -94,7 +94,7 @@ namespace Architecture_Reminder.Managers
 
         public static void AddReminder(Reminder reminder)
         {
-            EntityWrapper.DeleteReminder(reminder);
+            EntityWrapper.AddReminder(reminder);
         }
 
     }
