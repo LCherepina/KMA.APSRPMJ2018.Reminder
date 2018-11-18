@@ -117,10 +117,10 @@ namespace Architecture_Reminder.ViewModels
             LoaderManager.Instance.ShowLoader();
             var result = await Task.Run(() =>
             {
-                Thread.Sleep(300);
+             //   Thread.Sleep(300);
                 Reminder reminder = new Reminder(DateTime.Today.Date, DateTime.Now.Hour + 1, DateTime.Now.Minute, "",
                     StationManager.CurrentUser);
-                SelectedReminder = reminder;
+                    SelectedReminder = reminder;
                 DBManager.AddReminder(reminder);
              //   var remindertUIModel = new ReminderUIModel(reminder);
              //   _.Add(walletUIModel);

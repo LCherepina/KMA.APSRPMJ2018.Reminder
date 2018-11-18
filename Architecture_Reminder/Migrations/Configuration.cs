@@ -1,18 +1,20 @@
+
+using System.Data.Entity.Migrations;
+using Architecture_Reminder.Adapter;
+
+
 namespace Architecture_Reminder.Migrations
 {
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Architecture_Reminder.Adapter.ReminderDBContext>
+
+    internal sealed class Configuration : DbMigrationsConfiguration<ReminderDBContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Architecture_Reminder.Adapter.ReminderDBContext context)
+        protected override void Seed(ReminderDBContext context)
         {
             //  This method will be called after migrating to the latest version.
 

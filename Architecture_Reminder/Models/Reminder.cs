@@ -67,12 +67,14 @@ namespace Architecture_Reminder.Models
         //    public Reminder(DateTime dateTime, string text, User user)
         public Reminder(DateTime dateTime, int hours, int minutes, string text, User user)
         {
+            _guid = Guid.NewGuid();
             _dateTime = dateTime.Date;
             _hours = hours;
             _minutes = minutes;
             _text = text;
             _myId = _id;
             _id++;
+            _user = user;
             user.Reminders.Add(this);
             user.Reminders.Sort();
         }
@@ -80,7 +82,7 @@ namespace Architecture_Reminder.Models
         private Reminder() { }
         #endregion
 
-        public String ToString()
+        public override string ToString()
         {
             return _text;
         }

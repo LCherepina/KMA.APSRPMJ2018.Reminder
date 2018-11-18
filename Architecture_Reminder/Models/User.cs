@@ -61,7 +61,7 @@ namespace Architecture_Reminder.Models
         public List<Reminder> Reminders
         {
             get { return _reminders; }
-            //set { _reminders = value; }
+            private set { _reminders = value; }
         }
         #endregion
 
@@ -69,12 +69,14 @@ namespace Architecture_Reminder.Models
 
         public User(string login, string password, string firstName, string lastName, string email)
         {
+            _guid = Guid.NewGuid();
             _login = login;
             SetPassword(password);
             _firstName = firstName;
             _lastName = lastName;
             _email = email;
             _reminders = new List<Reminder>();
+          
         }
 
         private User()

@@ -34,11 +34,11 @@ namespace Architecture_Reminder.Adapter
             }
         }
 
-        public static List<User> GetAllUsers(Guid walletGuid)
+        public static List<User> GetAllUsers(Guid reminderGuid)
         {
             using (var context = new ReminderDBContext())
             {
-                return context.Users.Where(u => u.Reminders.All(r => r.Guid != walletGuid)).ToList();
+                return context.Users.Where(u => u.Reminders.All(r => r.Guid != reminderGuid)).ToList();
             }
         }
 
