@@ -194,6 +194,7 @@ namespace Architecture_Reminder.ViewModels
                     
                 }
             }
+            
            // OnPropertyChanged();
         }
 

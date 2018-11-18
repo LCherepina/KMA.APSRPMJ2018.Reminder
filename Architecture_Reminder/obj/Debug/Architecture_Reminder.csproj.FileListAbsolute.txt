@@ -79,3 +79,8 @@ C:\Users\Liza\Documents\GitHub\KMA.APSRPMJ2018.Reminder\Architecture_Reminder\ob
 C:\Users\Liza\Documents\GitHub\KMA.APSRPMJ2018.Reminder\Architecture_Reminder\bin\Debug\FontAwesome.WPF.dll
 C:\Users\Liza\Documents\GitHub\KMA.APSRPMJ2018.Reminder\Architecture_Reminder\bin\Debug\FontAwesome.WPF.xml
 C:\Users\Liza\Documents\GitHub\KMA.APSRPMJ2018.Reminder\Architecture_Reminder\obj\Debug\Architecture_Reminder.csproj.CopyComplete
+C:\Users\Liza\Documents\GitHub\KMA.APSRPMJ2018.Reminder\Architecture_Reminder\bin\Debug\EntityFramework.dll
+C:\Users\Liza\Documents\GitHub\KMA.APSRPMJ2018.Reminder\Architecture_Reminder\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Liza\Documents\GitHub\KMA.APSRPMJ2018.Reminder\Architecture_Reminder\bin\Debug\EntityFramework.xml
+C:\Users\Liza\Documents\GitHub\KMA.APSRPMJ2018.Reminder\Architecture_Reminder\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Liza\Documents\GitHub\KMA.APSRPMJ2018.Reminder\Architecture_Reminder\obj\Debug\Architecture_Reminder.Migrations.NewReminderDBv1.resources

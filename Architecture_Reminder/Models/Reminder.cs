@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity.ModelConfiguration;
 
 namespace Architecture_Reminder.Models
 {
@@ -7,15 +8,22 @@ namespace Architecture_Reminder.Models
     {
         public static int _id = 1;
         #region Fields
+        private Guid _guid;
+        private Guid _userGuid;
         private DateTime _dateTime;
         private int _minutes;
         private int _hours;
         private string _text;
         private int _myId;
+        private User _user;
         #endregion
 
         #region Properties
-
+        public Guid Guid
+        {
+            get { return _guid; }
+            private set { _guid = value; }
+        }
         public int MyId
         {
             get { return _myId; }
@@ -41,6 +49,17 @@ namespace Architecture_Reminder.Models
         {
             get { return _text; }
             set { _text = value; }
+        }
+
+        public User User
+        {
+            get { return _user; }
+            private set { _user = value; }
+        }
+        public Guid UserGuid
+        {
+            get { return _userGuid; }
+            private set { _userGuid = value; }
         }
         #endregion
 
@@ -86,6 +105,37 @@ namespace Architecture_Reminder.Models
                 return -1;
 
             return 0;
+        }
+        #region EntityFrameworkConfiguration
+        public class ReminderEntityConfiguration : EntityTypeConfiguration<Reminder>
+        {
+            public ReminderEntityConfiguration()
+            {
+                ToTable("Reminder");
+                HasKey(s => s.Guid);
+
+                Property(p => p.Guid)
+                    .HasColumnName("Guid")
+                    .IsRequired();
+                Property(p => p.RemDate)
+                    .HasColumnName("RemDate")
+                    .IsRequired();
+                Property(s => s.RemTimeHour)
+                    .HasColumnName("RemTimeHour")
+                    .IsRequired();
+                Property(s => s.RemTimeMin)
+                    .HasColumnName("RemTimeMin")
+                    .IsRequired();
+                Property(s => s.RemText)
+                    .HasColumnName("RemText")
+                    .IsRequired();
+            }
+        }
+        #endregion
+
+        public void DeleteDatabaseValues()
+        {
+            _user = null;
         }
     }
 }

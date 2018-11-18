@@ -1,6 +1,7 @@
 ﻿using Architecture_Reminder.Tools;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.ModelConfiguration;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -91,10 +92,72 @@ namespace Architecture_Reminder.Models
 
         public bool CheckPassword(string password)
         {
-            Console.WriteLine(_password);
-            string res = Encrypting.Encrypt(password);
-            return _password.CompareTo(res) == 0;
+            try
+            {
+                Console.WriteLine(_password);
+                string res = Encrypting.Encrypt(password);
+                return _password.CompareTo(res) == 0;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            
+        }
+        public bool CheckPassword(User userCandidate)
+        {
+            try
+            {
+                return _password == userCandidate._password;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
+        public override string ToString()
+        {
+            return $"{LastName} {FirstName}";
+        }
+
+        #region EntityConfiguration
+
+        public class UserEntityConfiguration : EntityTypeConfiguration<User>
+        {
+            public UserEntityConfiguration()
+            {
+                ToTable("Users");
+                HasKey(s => s.Guid);
+
+                Property(p => p.Guid)
+                    .HasColumnName("Guid")
+                    .IsRequired();
+                Property(p => p.FirstName)
+                    .HasColumnName("FirstName")
+                    .IsRequired();
+                Property(p => p.LastName)
+                    .HasColumnName("LastName")
+                    .IsRequired();
+                Property(p => p.Email)
+                    .HasColumnName("Email")
+                    .IsOptional();
+                Property(p => p.Login)
+                    .HasColumnName("Login")
+                    .IsRequired();
+                Property(p => p.Password)
+                    .HasColumnName("Password")
+                    .IsRequired();
+              //  Property(p => p.LastLoginDate)
+                //    .HasColumnName("LastLoginDate")
+                  //  .IsRequired();
+
+                HasMany(s => s.Reminders)
+                    .WithRequired(w => w.User)
+                    .HasForeignKey(w => w.UserGuid)
+                    .WillCascadeOnDelete(true);
+            }
+        }
+        #endregion
     }
 }
