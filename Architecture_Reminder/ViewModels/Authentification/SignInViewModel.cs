@@ -93,6 +93,7 @@ namespace Architecture_Reminder.ViewModels.Authentification
             {
                 Thread.Sleep(100);
                 User currentUser;
+
                 try
                 {
                     currentUser = DBManager.GetUserByLogin(_login);
@@ -124,6 +125,7 @@ namespace Architecture_Reminder.ViewModels.Authentification
                 }
 
                 StationManager.CurrentUser = currentUser;
+                
                 return true;
             });
             LoaderManager.Instance.HideLoader();

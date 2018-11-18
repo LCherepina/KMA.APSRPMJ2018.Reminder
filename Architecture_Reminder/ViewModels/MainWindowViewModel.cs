@@ -39,11 +39,11 @@ namespace Architecture_Reminder.ViewModels
             LoaderManager.Instance.Initialize(this);
         }
 
- /*       internal void StartApplication()
+        internal void StartApplication()
         {
             NavigationManager.Instance.Navigate(StationManager.CurrentUser != null ? ModesEnum.Main : ModesEnum.SignIn);
         }
-        */
+        
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]

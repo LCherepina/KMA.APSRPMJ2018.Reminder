@@ -15,6 +15,8 @@ namespace Architecture_Reminder.Managers
 
         static StationManager()
         {
+            _currentUser = new User("","","","","");
+
             DeserializeLastUser();
         }
 

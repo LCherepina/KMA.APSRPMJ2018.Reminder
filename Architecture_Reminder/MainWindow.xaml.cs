@@ -18,8 +18,8 @@ namespace Architecture_Reminder
             NavigationManager.Instance.Initialize(navigationModel);
             MainWindowViewModel mainWindowViewModel = new MainWindowViewModel();
             DataContext = mainWindowViewModel;
-
-            navigationModel.Navigate(ModesEnum.SignIn);
+            mainWindowViewModel.StartApplication();
+         //   navigationModel.Navigate(ModesEnum.SignIn);
         }
 
         public ContentControl ContentControl
