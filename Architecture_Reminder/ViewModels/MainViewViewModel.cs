@@ -13,6 +13,7 @@ using KMA.APZRPMJ2018.WalletSimulator.Properties;
 using Architecture_Reminder.Managers;
 using System.Threading;
 using System.Threading.Tasks;
+using Architecture_Reminder.Adapter;
 
 namespace Architecture_Reminder.ViewModels
 {
@@ -94,9 +95,9 @@ namespace Architecture_Reminder.ViewModels
 
         public MainViewViewModel()
         {
-            //FillReminders();
+            FillReminders();
             PropertyChanged += OnPropertyChanged;
-            _reminders = new List<ReminderUIModel>();
+            //OnPropertyChanged(nameof(SelectedReminder));
         }
         #endregion
 
@@ -110,11 +111,11 @@ namespace Architecture_Reminder.ViewModels
 
         private void FillReminders()
         {
-            /*_reminders = new List<Reminder>();
-            foreach (var wallet in StationManager.CurrentUser.Reminders)
-                _reminders.Add(wallet);
+            _reminders = new List<ReminderUIModel>();
+            foreach (var rem in EntityWrapper.GetUserByGuid(StationManager.CurrentUser.Guid).Reminders)
+                _reminders.Add(new ReminderUIModel(rem));
             if (_reminders.Count != 0)
-                SelectedReminder = _reminders[0];*/
+                SelectedReminder = _reminders[0];
         }
 
         private async void AddReminderExecute(object o)
@@ -143,10 +144,11 @@ namespace Architecture_Reminder.ViewModels
             {
                 if (Reminders.Count == 0) return false;
                 if (SelectedReminderIndex < 0) return false;
-                Reminder r = Reminders.ElementAt(SelectedReminderIndex);
+                //Reminder r = Reminders.ElementAt(SelectedReminderIndex);
+                DBManager.DeleteReminder(Reminders.ElementAt(SelectedReminderIndex));
                 Reminders.RemoveAt(SelectedReminderIndex);
                 //if(SelectedReminder!=null)
-                DBManager.DeleteReminder(r);//(SelectedReminder.Reminder);
+                //(SelectedReminder.Reminder);
                 Reminders.Sort();
                 //FillReminders();
                 return true;

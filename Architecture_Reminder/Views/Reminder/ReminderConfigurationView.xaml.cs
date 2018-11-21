@@ -26,11 +26,11 @@ namespace Architecture_Reminder.Views.Reminder
 
         private int currentHour = DateTime.Now.Hour;
         private int currentMinute = DateTime.Now.Minute;
-        private int _id;
+        //private int _id;
         #endregion
         public ReminderConfigurationView(Models.Reminder reminder)
         {
-            _id = reminder.MyId;
+            //_id = reminder.MyId;
             InitializeComponent();
            reminderModel = new ReminderConfigurationViewModel(reminder);
             DataContext = reminderModel;
