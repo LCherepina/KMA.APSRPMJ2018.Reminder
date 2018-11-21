@@ -21,9 +21,9 @@ namespace Architecture_Reminder.ViewModels
         #region Fields
 
         private int _indexSelected;
-        private Reminder _selectedReminder;
+        private ReminderUIModel _selectedReminder;
         //private MainView _mainView;
-        //private List<Reminder> _reminders;
+        private List<ReminderUIModel> _reminders;
 
         #region Commands
         private ICommand _addReminderCommand;
@@ -71,7 +71,8 @@ namespace Architecture_Reminder.ViewModels
 
         public List<Reminder> Reminders
         {
-            get {
+            get
+            {
                 return StationManager.CurrentUser.Reminders;
             }
         }
@@ -86,7 +87,7 @@ namespace Architecture_Reminder.ViewModels
             }
         }
 
-        public Reminder SelectedReminder { get { return _selectedReminder; } set { _selectedReminder = value; } }
+        public ReminderUIModel SelectedReminder { get { return _selectedReminder; } set { _selectedReminder = value; } }
         #endregion
 
         #region Constructor
@@ -95,12 +96,16 @@ namespace Architecture_Reminder.ViewModels
         {
             //FillReminders();
             PropertyChanged += OnPropertyChanged;
+            _reminders = new List<ReminderUIModel>();
         }
         #endregion
 
         private void OnPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs)
         {
-            OnReminderChanged(SelectedReminder);
+            //OnReminderChanged(SelectedReminder);
+            //if (propertyChangedEventArgs.PropertyName == "SelectedWallet")
+            if(SelectedReminder != null)
+                OnReminderChanged(SelectedReminder.Reminder);
         }
 
         private void FillReminders()
@@ -117,18 +122,14 @@ namespace Architecture_Reminder.ViewModels
             LoaderManager.Instance.ShowLoader();
             var result = await Task.Run(() =>
             {
-             //   Thread.Sleep(300);
+                //   Thread.Sleep(300);
                 Reminder reminder = new Reminder(DateTime.Today.Date, DateTime.Now.Hour + 1, DateTime.Now.Minute, "",
                     StationManager.CurrentUser);
-                    SelectedReminder = reminder;
+                var remUIModel = new ReminderUIModel(reminder);
+                _reminders.Add(remUIModel);
+                SelectedReminder = remUIModel;
                 DBManager.AddReminder(reminder);
-             //   var remindertUIModel = new ReminderUIModel(reminder);
-             //   _.Add(walletUIModel);
-           //     _selectedWallet = walletUIModel;
-                //_reminders.Add(reminder);
-
                 return true;
-
             });
             LoaderManager.Instance.HideLoader();
             OnPropertyChanged();
@@ -142,11 +143,12 @@ namespace Architecture_Reminder.ViewModels
             {
                 if (Reminders.Count == 0) return false;
                 if (SelectedReminderIndex < 0) return false;
+                Reminder r = Reminders.ElementAt(SelectedReminderIndex);
                 Reminders.RemoveAt(SelectedReminderIndex);
-                DBManager.DeleteReminder(SelectedReminder);
+                //if(SelectedReminder!=null)
+                DBManager.DeleteReminder(r);//(SelectedReminder.Reminder);
                 Reminders.Sort();
                 //FillReminders();
-               
                 return true;
             });
             LoaderManager.Instance.HideLoader();
@@ -170,7 +172,7 @@ namespace Architecture_Reminder.ViewModels
         private void RunReminderExecute(object o)
         {
 
-           Thread myThread = new Thread(new ThreadStart(CheckIfRun));
+            Thread myThread = new Thread(new ThreadStart(CheckIfRun));
             myThread.IsBackground = true;
             myThread.Start();
             OnPropertyChanged();
@@ -182,24 +184,24 @@ namespace Architecture_Reminder.ViewModels
             {
                 if (Reminders[0].RemTimeHour == DateTime.Now.Hour)
                 {
-                    int minRemain = (Reminders[0].RemTimeMin - DateTime.Now.Minute) ;
+                    int minRemain = (Reminders[0].RemTimeMin - DateTime.Now.Minute);
                     TimeSpan interval = new TimeSpan(0, minRemain, -20);
 
                     Thread.Sleep(interval);
                     Console.WriteLine("Reminder");
 
-                    
+
                     MessageBox.Show(Reminders[0].RemTimeHour + " : " + Reminders[0].RemTimeMin + " " + Reminders[0].ToString());
                     Reminders.RemoveAt(0);
 
                     DBManager.UpdateUser(StationManager.CurrentUser);
                     Reminders.Sort();
 
-                    
+
                 }
             }
-            
-           // OnPropertyChanged();
+
+            // OnPropertyChanged();
         }
 
         #region EventsAndHandlers
@@ -226,3 +228,4 @@ namespace Architecture_Reminder.ViewModels
 
 
 }
+ 

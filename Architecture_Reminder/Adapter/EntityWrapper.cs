@@ -47,6 +47,7 @@ namespace Architecture_Reminder.Adapter
             using (var context = new ReminderDBContext())
             {
                 context.Users.Add(user);
+                Console.WriteLine("user guid ---   " + user.Guid);
                 context.SaveChanges();
             }
         }
@@ -57,6 +58,7 @@ namespace Architecture_Reminder.Adapter
             {
                 reminder.DeleteDatabaseValues();
                 context.Reminders.Add(reminder);
+                Console.WriteLine("rems guid ---   " + reminder.Guid);
                 context.SaveChanges();
             }
         }

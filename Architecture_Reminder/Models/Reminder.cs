@@ -75,6 +75,7 @@ namespace Architecture_Reminder.Models
             _myId = _id;
             _id++;
             _user = user;
+            _userGuid = user.Guid;
             user.Reminders.Add(this);
             user.Reminders.Sort();
         }
@@ -116,6 +117,12 @@ namespace Architecture_Reminder.Models
                 ToTable("Reminder");
                 HasKey(s => s.Guid);
 
+                Property(p => p.MyId)
+                    .HasColumnName("MyId")
+                    .IsRequired();
+                Property(p => p.UserGuid)
+                    .HasColumnName("UserGuid")
+                    .IsRequired();
                 Property(p => p.Guid)
                     .HasColumnName("Guid")
                     .IsRequired();

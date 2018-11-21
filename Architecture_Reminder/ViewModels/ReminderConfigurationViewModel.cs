@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Threading;
 using KMA.APZRPMJ2018.WalletSimulator.Properties;
+using Architecture_Reminder.Adapter;
 
 namespace Architecture_Reminder.ViewModels
 {
@@ -27,6 +28,7 @@ namespace Architecture_Reminder.ViewModels
             set
             {
                 _currentReminder.RemDate = value;
+                EntityWrapper.SaveReminder(_currentReminder);
                 OnPropertyChanged();
             }
         }
@@ -49,7 +51,7 @@ namespace Architecture_Reminder.ViewModels
                    _currentReminder.RemTimeHour = _currentReminder.RemTimeHour;
                    OnPropertyChanged();
                 }
-                
+                EntityWrapper.SaveReminder(_currentReminder);
             }
         }
         public int RemTimeMinutes
@@ -70,14 +72,15 @@ namespace Architecture_Reminder.ViewModels
                    _currentReminder.RemTimeMin = oldTime;
                    OnPropertyChanged();
                 }
-               
-           /*     if (value < DateTime.Now.Minute && _currentReminder.RemDate < DateTime.Today &&
-                      _currentReminder.RemTimeHour <= DateTime.Now.Hour)
-                {
-                    Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() => RemTimeMinutes = oldTime),
-                            DispatcherPriority.ApplicationIdle);
-                }
-                */
+
+                /*     if (value < DateTime.Now.Minute && _currentReminder.RemDate < DateTime.Today &&
+                           _currentReminder.RemTimeHour <= DateTime.Now.Hour)
+                     {
+                         Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() => RemTimeMinutes = oldTime),
+                                 DispatcherPriority.ApplicationIdle);
+                     }
+                     */
+                EntityWrapper.SaveReminder(_currentReminder);
             }
         }
 
@@ -87,6 +90,7 @@ namespace Architecture_Reminder.ViewModels
             set
             {
                 _currentReminder.RemText = value;
+                EntityWrapper.SaveReminder(_currentReminder);
                 OnPropertyChanged();
             }
         }
