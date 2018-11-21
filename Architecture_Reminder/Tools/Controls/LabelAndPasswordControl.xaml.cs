@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Windows;
 
 namespace Architecture_Reminder.Tools.Controls
@@ -30,7 +31,6 @@ namespace Architecture_Reminder.Tools.Controls
             typeof(LabelAndPasswordControl),
             new PropertyMetadata(string.Empty)
         );
-
 
         public string Caption
         {

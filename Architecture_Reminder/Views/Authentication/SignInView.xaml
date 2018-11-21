@@ -20,9 +20,9 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <controls:LabelAndTextControl Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding Login, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+        <controls:LabelAndTextControl x:Name="LoginField" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding Login, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                               Caption="Login" Margin="10" Grid.RowSpan="2"></controls:LabelAndTextControl>
-        <controls:LabelAndPasswordControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Password="{Binding Password, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+        <controls:LabelAndPasswordControl x:Name="PasswordField" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Password="{Binding Password, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                 Caption="Password" Margin="10" Grid.RowSpan="2"></controls:LabelAndPasswordControl>
 
         <Button Grid.Row="2" Grid.Column="0" Content="Log in" HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" Command="{Binding SignInCommand}"/>

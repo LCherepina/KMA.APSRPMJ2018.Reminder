@@ -6,7 +6,7 @@ using Architecture_Reminder.Models;
 
 namespace Architecture_Reminder.Models
 {
-    public class ReminderUIModel : INotifyPropertyChanged
+    public class ReminderUIModel : INotifyPropertyChanged, IComparable<ReminderUIModel>
     {
         #region Fields
         private Reminder _reminder;
@@ -81,6 +81,11 @@ namespace Architecture_Reminder.Models
         internal virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public int CompareTo(ReminderUIModel other)
+        {
+            return this.Reminder.CompareTo(other.Reminder);
         }
         #endregion
         #endregion

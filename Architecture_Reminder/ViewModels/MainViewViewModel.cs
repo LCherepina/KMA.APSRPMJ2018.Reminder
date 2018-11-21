@@ -70,11 +70,12 @@ namespace Architecture_Reminder.ViewModels
 
         #endregion
 
-        public List<Reminder> Reminders
+        public List<ReminderUIModel> Reminders
         {
             get
             {
-                return StationManager.CurrentUser.Reminders;
+                return _reminders;
+                //return StationManager.CurrentUser.Reminders;
             }
         }
 
@@ -97,25 +98,28 @@ namespace Architecture_Reminder.ViewModels
         {
             FillReminders();
             PropertyChanged += OnPropertyChanged;
-            //OnPropertyChanged(nameof(SelectedReminder));
         }
         #endregion
 
         private void OnPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs)
         {
-            //OnReminderChanged(SelectedReminder);
-            //if (propertyChangedEventArgs.PropertyName == "SelectedWallet")
             if(SelectedReminder != null)
                 OnReminderChanged(SelectedReminder.Reminder);
         }
 
-        private void FillReminders()
+        private async void FillReminders()
         {
-            _reminders = new List<ReminderUIModel>();
-            foreach (var rem in EntityWrapper.GetUserByGuid(StationManager.CurrentUser.Guid).Reminders)
-                _reminders.Add(new ReminderUIModel(rem));
-            if (_reminders.Count != 0)
-                SelectedReminder = _reminders[0];
+            var result = await Task.Run(() =>
+            {
+                Thread.Sleep(100);
+                _reminders = new List<ReminderUIModel>();
+                foreach (var rem in EntityWrapper.GetUserByGuid(StationManager.CurrentUser.Guid).Reminders)
+                    _reminders.Add(new ReminderUIModel(rem));
+                if (_reminders.Count != 0)
+                    SelectedReminder = _reminders[0];
+                return true;
+            });
+            OnPropertyChanged();
         }
 
         private async void AddReminderExecute(object o)
@@ -134,7 +138,6 @@ namespace Architecture_Reminder.ViewModels
             });
             LoaderManager.Instance.HideLoader();
             OnPropertyChanged();
-
         }
 
         private async void DeleteReminderExecute(KeyEventArgs args)
@@ -144,13 +147,9 @@ namespace Architecture_Reminder.ViewModels
             {
                 if (Reminders.Count == 0) return false;
                 if (SelectedReminderIndex < 0) return false;
-                //Reminder r = Reminders.ElementAt(SelectedReminderIndex);
-                DBManager.DeleteReminder(Reminders.ElementAt(SelectedReminderIndex));
+                DBManager.DeleteReminder(Reminders.ElementAt(SelectedReminderIndex).Reminder);
                 Reminders.RemoveAt(SelectedReminderIndex);
-                //if(SelectedReminder!=null)
-                //(SelectedReminder.Reminder);
                 Reminders.Sort();
-                //FillReminders();
                 return true;
             });
             LoaderManager.Instance.HideLoader();
@@ -159,6 +158,8 @@ namespace Architecture_Reminder.ViewModels
 
         private async void LogOutExecute(object obj)
         {
+            _reminders.Clear();
+            OnPropertyChanged();
             LoaderManager.Instance.ShowLoader();
             var result = await Task.Run(() =>
             {
@@ -171,15 +172,17 @@ namespace Architecture_Reminder.ViewModels
                 NavigationManager.Instance.Navigate(ModesEnum.SignIn);
         }
 
+
         private void RunReminderExecute(object o)
         {
 
-            Thread myThread = new Thread(new ThreadStart(CheckIfRun));
-            myThread.IsBackground = true;
-            myThread.Start();
+            //Thread myThread = new Thread(new ThreadStart(CheckIfRun));
+            //myThread.IsBackground = true;
+            //myThread.Start();
             OnPropertyChanged();
         }
 
+        /*
         private void CheckIfRun()
         {
             if (Reminders[0].RemDate == DateTime.Today)
@@ -204,7 +207,7 @@ namespace Architecture_Reminder.ViewModels
             }
 
             // OnPropertyChanged();
-        }
+        }*/
 
         #region EventsAndHandlers
         #region Loader
@@ -214,6 +217,7 @@ namespace Architecture_Reminder.ViewModels
         internal virtual void OnReminderChanged(Reminder reminder)
         {
             ReminderChanged?.Invoke(reminder);
+            //ReminderChanged(reminder);
         }
         #endregion
         #region PropertyChanged

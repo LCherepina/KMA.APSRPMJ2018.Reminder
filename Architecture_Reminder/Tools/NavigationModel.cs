@@ -16,9 +16,9 @@ namespace Architecture_Reminder.Tools
     internal class NavigationModel
     {
         private readonly IContentWindow _contentWindow;
-        private SignInView _signInView;
+        //private SignInView _signInView;
         private SignUpView _signUpView;
-        private MainView _mainView;
+        //private MainView _mainView;
 
         internal NavigationModel(IContentWindow contentWindow)
         {
@@ -30,13 +30,20 @@ namespace Architecture_Reminder.Tools
             switch(mode)
             {
                 case ModesEnum.SignIn:
-                    _contentWindow.ContentControl.Content = _signInView ?? (_signInView = new SignInView());
+                    _contentWindow.ContentControl.Content = new SignInView();
+                    /*if (_signInView != null)
+                    {
+                        _signInView.LoginField.Text = "";
+                        _signInView.PasswordField.Password = "";
+                    }
+                    _contentWindow.ContentControl.Content = _signInView ?? (_signInView = new SignInView());*/
                     break;
                 case ModesEnum.SignUp:
                     _contentWindow.ContentControl.Content = _signUpView ?? (_signUpView = new SignUpView());
                     break;
                 case ModesEnum.Main:
-                    _contentWindow.ContentControl.Content = _mainView ?? (_mainView = new MainView());
+                    _contentWindow.ContentControl.Content = new MainView();
+                    //_contentWindow.ContentControl.Content = _mainView ?? (_mainView = new MainView());
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(mode), mode, null);

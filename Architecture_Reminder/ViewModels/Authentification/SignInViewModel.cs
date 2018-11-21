@@ -100,7 +100,7 @@ namespace Architecture_Reminder.ViewModels.Authentification
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show("Failed to get user with login +" + _login + "./n" + e.Message);
+                    MessageBox.Show("Failed to get user with login +" + _login + ".\n" + e.Message);
                     return false;
                 }
 
@@ -120,7 +120,7 @@ namespace Architecture_Reminder.ViewModels.Authentification
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show("Failed to validate password!/n" + e.Message);
+                    MessageBox.Show("Failed to validate password!\n" + e.Message);
                     return false;
                 }
 
