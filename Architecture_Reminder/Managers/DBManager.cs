@@ -57,11 +57,18 @@ namespace Architecture_Reminder.Managers
 
         public static void UpdateUser(User currentUser)
         {
-            SaveChanges();
+            EntityWrapper.SaveUser(currentUser);
+            //SaveChanges();
         }
         private static void SaveChanges()
         {
-            //return EntityWrapper.();
+
+            
+        }
+
+        public static User GetLastUser()
+        {
+            return EntityWrapper.GetLastUserByDate();
         }
 
         public static bool UserExists(string login)

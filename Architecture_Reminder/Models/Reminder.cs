@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity.Migrations.Model;
 using System.Data.Entity.ModelConfiguration;
 
 namespace Architecture_Reminder.Models
@@ -6,7 +7,6 @@ namespace Architecture_Reminder.Models
     [Serializable]
     public class Reminder : IComparable<Reminder>
     {
-        public static int _id = 1;
         #region Fields
         private Guid _guid;
         private Guid _userGuid;
@@ -14,7 +14,6 @@ namespace Architecture_Reminder.Models
         private int _minutes;
         private int _hours;
         private string _text;
-        private int _myId;
         private User _user;
         #endregion
 
@@ -23,11 +22,6 @@ namespace Architecture_Reminder.Models
         {
             get { return _guid; }
             private set { _guid = value; }
-        }
-        public int MyId
-        {
-            get { return _myId; }
-            set { _myId = value; }
         }
 
         public DateTime RemDate
@@ -72,8 +66,6 @@ namespace Architecture_Reminder.Models
             _hours = hours;
             _minutes = minutes;
             _text = text;
-            _myId = _id;
-            _id++;
             _user = user;
             _userGuid = user.Guid;
             user.Reminders.Add(this);
@@ -82,11 +74,6 @@ namespace Architecture_Reminder.Models
 
         private Reminder() { }
         #endregion
-
-        public override string ToString()
-        {
-            return _text;
-        }
 
         public int CompareTo(Reminder other)
         {
@@ -117,9 +104,6 @@ namespace Architecture_Reminder.Models
                 ToTable("Reminder");
                 HasKey(s => s.Guid);
 
-                Property(p => p.MyId)
-                    .HasColumnName("MyId")
-                    .IsRequired();
                 Property(p => p.UserGuid)
                     .HasColumnName("UserGuid")
                     .IsRequired();

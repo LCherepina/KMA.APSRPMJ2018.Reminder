@@ -164,12 +164,17 @@ namespace Architecture_Reminder.ViewModels
             var result = await Task.Run(() =>
             {
                 Thread.Sleep(100);
+                StationManager.CurrentUser.LogOut = true;
+                DBManager.UpdateUser(StationManager.CurrentUser);
                 StationManager.CurrentUser = null;
                 return true;
             });
             LoaderManager.Instance.HideLoader();
             if (result)
+            {
                 NavigationManager.Instance.Navigate(ModesEnum.SignIn);
+               
+            }
         }
 
 

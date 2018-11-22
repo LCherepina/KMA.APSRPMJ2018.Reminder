@@ -15,9 +15,36 @@ namespace Architecture_Reminder.Managers
 
         static StationManager()
         {
-            _currentUser = new User("","","","","");
+            //   _currentUser = new User("","","","","");
+            // _currentUser = DBManager.GetLastUser();
+            //DeserializeLastUser();
+           
+            _currentUser = GetLastUser();
+            if (_currentUser != null)
+            {
+                _currentUser.LastLoginDate = DateTime.Now;
+                DBManager.UpdateUser(_currentUser);
+                
+            }
+           
+            Console.WriteLine(_currentUser);
+        }
 
-            DeserializeLastUser();
+        private static User GetLastUser()
+        {
+            User userCandidate;
+            try
+            {
+                userCandidate = DBManager.GetLastUser();
+            }
+            catch (Exception e)
+            {
+                userCandidate = null;
+               
+            }
+            
+
+            return userCandidate;
         }
 
         private static void DeserializeLastUser()
@@ -40,7 +67,8 @@ namespace Architecture_Reminder.Managers
             if (userCandidate == null)
                 Logger.Log("Failed to relogin last user");
             else
-                CurrentUser = userCandidate;
+                //CurrentUser = userCandidate;
+                _currentUser = userCandidate;
         }
 
         public static void Initialize()

@@ -3,3 +3,10 @@
 *.cache
 *.cache
 *.cache
+*.cache
+*.cache
+Architecture_Reminder/obj/Debug/Architecture_Reminder_MarkupCompile.i.cache
+*.ide
+*.ide-shm
+*.ide-wal
+Architecture_Reminder/bin/Debug/Architecture_Reminder.pdb
