@@ -128,6 +128,8 @@ namespace Architecture_Reminder.ViewModels.Authentification
                 try
                 {
                     User user = new User(_login, _password, _firstName, _lastName, _email);
+                    if (DBManager.UserExists(user.Login))
+                        throw new Exception("User with login " + user.Login + " exists!");
                     DBManager.AddUser(user);
                     StationManager.CurrentUser = user;
                 }
@@ -139,6 +141,16 @@ namespace Architecture_Reminder.ViewModels.Authentification
                 MessageBox.Show("User with login " + _login + " is successfuly created!");
                 return true;
             });
+            _login = "";
+            _password = "";
+            _firstName = "";
+            _lastName = "";
+            _email = "";
+            OnPropertyChanged("Login");
+            OnPropertyChanged("Password");
+            OnPropertyChanged("FirstName");
+            OnPropertyChanged("LastName");
+            OnPropertyChanged("Email");
             LoaderManager.Instance.HideLoader();
             if (result)
                 NavigationManager.Instance.Navigate(ModesEnum.Main);

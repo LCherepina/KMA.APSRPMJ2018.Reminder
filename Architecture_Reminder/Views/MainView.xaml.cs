@@ -41,10 +41,9 @@ namespace Architecture_Reminder.Views
             for (int i = 0; i < (_countChildren); i++)
             {
                 _currentReminderConfigurationView =
-                    new ReminderConfigurationView(_mainViewViewModel.Reminders.ElementAt(i).Reminder);
+                    new ReminderConfigurationView(_mainViewViewModel.Reminders.ElementAt(i));
                 ListBoxMain.Items.Add(_currentReminderConfigurationView);
             }
-
         }
 
     }

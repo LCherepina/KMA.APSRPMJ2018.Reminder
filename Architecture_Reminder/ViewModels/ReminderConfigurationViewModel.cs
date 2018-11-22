@@ -5,6 +5,8 @@ using System.Runtime.CompilerServices;
 using System.Windows.Threading;
 using KMA.APZRPMJ2018.WalletSimulator.Properties;
 using Architecture_Reminder.Adapter;
+using Architecture_Reminder.Managers;
+using Architecture_Reminder.Tools;
 
 namespace Architecture_Reminder.ViewModels
 {

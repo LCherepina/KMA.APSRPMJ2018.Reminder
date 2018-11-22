@@ -33,7 +33,6 @@
             <Grid Name="MainGrid" Margin="60,0,0,0">
 
                 <ListBox Name="ListBoxMain" BorderThickness="0" HorizontalContentAlignment="Stretch" SelectedIndex="{Binding SelectedReminderIndex}">
-
                 </ListBox>
             </Grid>
 

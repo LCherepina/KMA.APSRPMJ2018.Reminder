@@ -125,11 +125,14 @@ namespace Architecture_Reminder.ViewModels.Authentification
                 }
 
                 StationManager.CurrentUser = currentUser;
-                
                 return true;
             });
+            _login = "";
+            _password = "";
+            OnPropertyChanged("Login");
+            OnPropertyChanged("Password");
             LoaderManager.Instance.HideLoader();
-            if(result)
+            if (result) 
                 NavigationManager.Instance.Navigate(ModesEnum.Main);
         }
         private void SignUpExecute(object obj)
