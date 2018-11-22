@@ -18,6 +18,8 @@ namespace Architecture_Reminder.Models
         private string _firstName;
         private string _lastName;
         private string _email;
+        private DateTime _lastLoginDate;
+        private bool _logOut;
         private List<Reminder> _reminders;
         #endregion
 
@@ -43,6 +45,22 @@ namespace Architecture_Reminder.Models
             get { return _password; }
             private set { _password = value; }
         }
+
+        public DateTime LastLoginDate
+        {
+            get { return _lastLoginDate; }
+            set { _lastLoginDate = value; }
+        }
+
+        public bool LogOut
+        {
+            get
+            {
+                return _logOut;
+            }
+            set { _logOut = value; }
+        }
+
         public string FirstName
         {
             get { return _firstName; }
@@ -58,6 +76,7 @@ namespace Architecture_Reminder.Models
             get { return _email; }
             private set { _email = value; }
         }
+
         public List<Reminder> Reminders
         {
             get { return _reminders; }
@@ -75,6 +94,8 @@ namespace Architecture_Reminder.Models
             _firstName = firstName;
             _lastName = lastName;
             _email = email;
+            _lastLoginDate = DateTime.Now;
+            _logOut = false;
             _reminders = new List<Reminder>();
           
         }
@@ -150,9 +171,12 @@ namespace Architecture_Reminder.Models
                 Property(p => p.Password)
                     .HasColumnName("Password")
                     .IsRequired();
-              //  Property(p => p.LastLoginDate)
-                //    .HasColumnName("LastLoginDate")
-                  //  .IsRequired();
+                Property(p => p.LastLoginDate)
+                    .HasColumnName("LastLoginDate")
+                    .IsRequired();
+                Property(p => p.LogOut)
+                    .HasColumnName("LogOut")
+                    .IsRequired();
 
                 HasMany(s => s.Reminders)
                     .WithRequired(w => w.User)

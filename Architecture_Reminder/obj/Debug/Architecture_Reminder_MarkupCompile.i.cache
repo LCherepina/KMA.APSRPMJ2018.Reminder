@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Liza\Documents\GitHub\KMA.APSRPMJ2018.Reminder\Architecture_Reminder\obj\Debug\
+C:\Users\Anna_Shkuta\Documents\GitHub\KMA.APSRPMJ2018.Reminder\Architecture_Reminder\obj\Debug\
 Architecture_Reminder
 none
 false
 DEBUG;TRACE
-C:\Users\Liza\Documents\GitHub\KMA.APSRPMJ2018.Reminder\Architecture_Reminder\App.xaml
+C:\Users\Anna_Shkuta\Documents\GitHub\KMA.APSRPMJ2018.Reminder\Architecture_Reminder\App.xaml
 7-1552086484
 
-43-829053446
-17-484335965
+43-1320026055
+17913315910
 MainWindow.xaml;Tools\Controls\LabelAndPasswordControl.xaml;Tools\Controls\LabelAndTextControl.xaml;Views\Authentication\SignInView.xaml;Views\Authentication\SignUpView.xaml;Views\MainView.xaml;Views\Reminder\ReminderConfigurationView.xaml;
 
-False
+True
 
