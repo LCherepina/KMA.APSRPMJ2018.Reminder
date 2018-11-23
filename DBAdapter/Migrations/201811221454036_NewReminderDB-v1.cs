@@ -7,12 +7,10 @@ namespace Architecture_Reminder.Migrations
     {
         public override void Up()
         {
-            DropColumn("dbo.Reminder", "MyId");
         }
         
         public override void Down()
         {
-            AddColumn("dbo.Reminder", "MyId", c => c.Int(nullable: false));
         }
     }
 }

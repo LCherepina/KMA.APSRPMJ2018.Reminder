@@ -1,19 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Architecture_Reminder.Models;
+
 using Architecture_Reminder.ViewModels;
+using Architecture_Reminder.Models;
 
 namespace Architecture_Reminder.Views.Reminder
 {
@@ -28,7 +18,7 @@ namespace Architecture_Reminder.Views.Reminder
         private int currentMinute = DateTime.Now.Minute;
         //private int _id;
         #endregion
-        public ReminderConfigurationView(ReminderUIModel reminder)
+        public ReminderConfigurationView(DBModels.Reminder reminder)
         {
             //_id = reminder.MyId;
             InitializeComponent();

@@ -1,6 +1,6 @@
 ﻿
-using Architecture_Reminder.Adapter;
-using Architecture_Reminder.Models;
+using Architecture_Reminder.DBAdapter;
+using Architecture_Reminder.DBModels;
 
 namespace Architecture_Reminder.Managers
 {

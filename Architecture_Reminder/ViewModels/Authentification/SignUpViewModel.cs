@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using Architecture_Reminder.Properties;
+using Architecture_Reminder.DBModels;
 
 namespace Architecture_Reminder.ViewModels.Authentification
 {

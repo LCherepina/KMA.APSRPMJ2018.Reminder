@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Windows;
-using Architecture_Reminder.Models;
 using System.IO;
 using System.Windows.Forms;
 using Architecture_Reminder.Tools;
+using Architecture_Reminder.DBModels;
 
 namespace Architecture_Reminder.Managers
 {
@@ -77,7 +76,7 @@ namespace Architecture_Reminder.Managers
 
         }
 
-        internal static void CloseApp()
+        public static void CloseApp()
         {
             MessageBox.Show("ShutDown");
             Environment.Exit(1);

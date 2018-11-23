@@ -2,9 +2,9 @@
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Windows.Threading;
-using Architecture_Reminder.Properties;
-
+using Architecture_Reminder.Annotations;
+using Architecture_Reminder.DBAdapter;
+using Architecture_Reminder.DBModels;
 
 namespace Architecture_Reminder.ViewModels
 {

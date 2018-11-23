@@ -1,9 +1,11 @@
 ﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using Architecture_Reminder.Models;
+
 using Architecture_Reminder.ViewModels;
 using Architecture_Reminder.Views.Reminder;
+using Architecture_Reminder.Models;
+using System.Threading;
 
 namespace Architecture_Reminder.Views
 {
@@ -33,18 +35,20 @@ namespace Architecture_Reminder.Views
             DataContext = _mainViewViewModel;
         }
 
-        private void OnReminderChanged(ReminderUIModel reminder)
+        private void OnReminderChanged(DBModels.Reminder reminder)
         {
-            ListBoxMain.Items.Clear();
+            Dispatcher.BeginInvoke(new ThreadStart(delegate {
+                ListBoxMain.Items.Clear();
 
-            _countChildren = _mainViewViewModel.Reminders.Count;
+                _countChildren = _mainViewViewModel.Reminders.Count;
 
-            for (int i = 0; i < (_countChildren); i++)
-            {
-                _currentReminderConfigurationView =
-                    new ReminderConfigurationView(_mainViewViewModel.Reminders.ElementAt(i));
-                ListBoxMain.Items.Add(_currentReminderConfigurationView);
-            }
+                for (int i = 0; i < (_countChildren); i++)
+                {
+                    _currentReminderConfigurationView =
+                        new ReminderConfigurationView(_mainViewViewModel.Reminders.ElementAt(i));
+                    ListBoxMain.Items.Add(_currentReminderConfigurationView);
+                }
+            }));
         }
 
     }

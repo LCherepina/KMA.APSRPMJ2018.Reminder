@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Architecture_Reminder.Annotations;
-
+using Architecture_Reminder.DBModels;
 
 namespace Architecture_Reminder.Models
 {
@@ -90,4 +90,5 @@ namespace Architecture_Reminder.Models
         #endregion
         #endregion
     }
+
 }

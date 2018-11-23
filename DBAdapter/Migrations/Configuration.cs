@@ -1,7 +1,6 @@
 
 using System.Data.Entity.Migrations;
-using Architecture_Reminder.Adapter;
-
+using Architecture_Reminder.DBAdapter;
 
 namespace Architecture_Reminder.Migrations
 {

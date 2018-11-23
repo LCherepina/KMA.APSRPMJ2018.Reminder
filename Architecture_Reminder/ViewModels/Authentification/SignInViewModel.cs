@@ -1,5 +1,5 @@
-﻿using Architecture_Reminder.Managers;
-using Architecture_Reminder.Models;
+﻿using Architecture_Reminder.DBModels;
+using Architecture_Reminder.Managers;
 using Architecture_Reminder.Tools;
 using System;
 using System.ComponentModel;

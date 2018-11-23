@@ -6,14 +6,13 @@ using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
-using Architecture_Reminder.Models;
 using Architecture_Reminder.Tools;
-using Architecture_Reminder.Views;
-using KMA.APZRPMJ2018.WalletSimulator.Properties;
-using Architecture_Reminder.Managers;
 using System.Threading;
 using System.Threading.Tasks;
-//using Architecture_Reminder.Adapter;
+using Architecture_Reminder.DBModels;
+using Architecture_Reminder.DBAdapter;
+using Architecture_Reminder.Managers;
+using Architecture_Reminder.Annotations;
 
 namespace Architecture_Reminder.ViewModels
 {
@@ -149,6 +148,7 @@ namespace Architecture_Reminder.ViewModels
                 _reminders.Add(reminder);
                 SelectedReminder = reminder;
                 DBManager.AddReminder(reminder);
+                _reminders.Sort();
                 RunReminderExecute(reminder.Guid);
                 return true;
             });
@@ -221,8 +221,7 @@ namespace Architecture_Reminder.ViewModels
                 _reminders.RemoveAt(i);
                 DBManager.DeleteReminder(r);
             }
-            
-            //OnPropertyChanged(); !!!!!!!!!!!!!!!!!!!!!!
+            OnPropertyChanged(); 
         }
 
 
