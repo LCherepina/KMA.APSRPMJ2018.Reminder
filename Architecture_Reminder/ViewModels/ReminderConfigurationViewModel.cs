@@ -3,10 +3,8 @@ using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Threading;
-using KMA.APZRPMJ2018.WalletSimulator.Properties;
-using Architecture_Reminder.Adapter;
-using Architecture_Reminder.Managers;
-using Architecture_Reminder.Tools;
+using Architecture_Reminder.Properties;
+
 
 namespace Architecture_Reminder.ViewModels
 {

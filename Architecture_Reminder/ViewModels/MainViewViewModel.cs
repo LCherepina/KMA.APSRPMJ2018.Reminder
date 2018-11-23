@@ -13,7 +13,7 @@ using KMA.APZRPMJ2018.WalletSimulator.Properties;
 using Architecture_Reminder.Managers;
 using System.Threading;
 using System.Threading.Tasks;
-using Architecture_Reminder.Adapter;
+//using Architecture_Reminder.Adapter;
 
 namespace Architecture_Reminder.ViewModels
 {
@@ -143,6 +143,7 @@ namespace Architecture_Reminder.ViewModels
             var result = await Task.Run(() =>
             {
                 //   Thread.Sleep(300);
+
                 Reminder reminder = new Reminder(DateTime.Today.Date, DateTime.Now.Hour + 1, DateTime.Now.Minute, "",
                     StationManager.CurrentUser);
                 _reminders.Add(reminder);
@@ -242,10 +243,10 @@ namespace Architecture_Reminder.ViewModels
             {
                 Reminder r = getReminderByGuid((Guid) g);
                 if (r == null) return;
-                Console.WriteLine(r.RemTimeHour + " : " + r.RemTimeMin + " " + r.ToString() + "    " + r.Guid);
+                
                 if (r.RemDate == DateTime.Today.Date && r.RemTimeHour == DateTime.Now.Hour && r.RemTimeMin == DateTime.Now.Minute)
                 {
-                    MessageBox.Show(r.RemTimeHour + " : " + r.RemTimeMin + " " + r.ToString());
+                    MessageBox.Show(r.RemTimeHour + " : " + r.RemTimeMin + " " + r.RemText);
                     DeleteReminderByGuid((Guid)g);
                     return;
                 }

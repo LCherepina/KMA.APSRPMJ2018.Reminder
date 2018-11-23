@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using Architecture_Reminder.Models;
 using Architecture_Reminder.ViewModels;
 using Architecture_Reminder.Views.Reminder;
 
@@ -32,7 +33,7 @@ namespace Architecture_Reminder.Views
             DataContext = _mainViewViewModel;
         }
 
-        private void OnReminderChanged(Models.Reminder reminder)
+        private void OnReminderChanged(ReminderUIModel reminder)
         {
             ListBoxMain.Items.Clear();
 

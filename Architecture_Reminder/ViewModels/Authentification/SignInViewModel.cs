@@ -126,6 +126,7 @@ namespace Architecture_Reminder.ViewModels.Authentification
 
                 StationManager.CurrentUser = currentUser;
                 StationManager.CurrentUser.LastLoginDate = DateTime.Now;
+                StationManager.CurrentUser.LogOut = false;
                 DBManager.UpdateUser(StationManager.CurrentUser);
                 return true;
             });
