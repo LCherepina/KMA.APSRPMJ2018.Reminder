@@ -11,43 +11,43 @@ namespace Architecture_Reminder.ReminderService
     {
         public bool UserExists(string login)
         {
-            return EntityWrapper.UserExists(login);
+            return DBAdapter.ReminderServiceWrapper.UserExists(login);
         }
 
         public User GetUserByLogin(string login)
         {
-            return EntityWrapper.GetUserByLogin(login);
+            return DBAdapter.ReminderServiceWrapper.GetUserByLogin(login);
         }
 
         public User GetUserByGuid(Guid guid)
         {
-            return EntityWrapper.GetUserByGuid(guid);
+            return DBAdapter.ReminderServiceWrapper.GetUserByGuid(guid);
         }
 
         public void AddUser(User user)
         {
-            EntityWrapper.AddUser(user);
+            DBAdapter.ReminderServiceWrapper.AddUser(user);
         }
 
         public void AddReminder(Reminder reminder)
         {
-            EntityWrapper.AddReminder(reminder);
+            DBAdapter.ReminderServiceWrapper.AddReminder(reminder);
         }
 
         public List<User> GetAllUsers(Guid reminderGuid)
         {
-            return EntityWrapper.GetAllUsers(reminderGuid);
+            return DBAdapter.ReminderServiceWrapper.GetAllUsers(reminderGuid);
         }
 
         public void DeleteReminder(Reminder selectedReminder)
         {
-            EntityWrapper.DeleteReminder(selectedReminder);
+            DBAdapter.ReminderServiceWrapper.DeleteReminder(selectedReminder);
         }
 
 
         public void SaveReminder(Reminder reminder)
         {
-            EntityWrapper.SaveReminder(reminder);
+            DBAdapter.ReminderServiceWrapper.SaveReminder(reminder);
         }
     }
 }

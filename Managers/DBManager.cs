@@ -57,7 +57,7 @@ namespace Architecture_Reminder.Managers
 
         public static void UpdateUser(User currentUser)
         {
-            EntityWrapper.SaveUser(currentUser);
+            ReminderServiceWrapper.SaveUser(currentUser);
             //SaveChanges();
         }
         private static void SaveChanges()
@@ -68,27 +68,27 @@ namespace Architecture_Reminder.Managers
 
         public static User GetLastUser()
         {
-            return EntityWrapper.GetLastUserByDate();
+            return ReminderServiceWrapper.GetLastUserByDate();
         }
 
         public static bool UserExists(string login)
         {
-            return EntityWrapper.UserExists(login);
+            return ReminderServiceWrapper.UserExists(login);
         }
 
         public static User GetUserByLogin(string login)
         {
-            return EntityWrapper.GetUserByLogin(login);
+            return ReminderServiceWrapper.GetUserByLogin(login);
         }
 
         public static void AddUser(User user)
         {
-            EntityWrapper.AddUser(user);
+            ReminderServiceWrapper.AddUser(user);
         }
 
         internal static User CheckCachedUser(User userCandidate)
         {
-            var userInStorage = EntityWrapper.GetUserByGuid(userCandidate.Guid);
+            var userInStorage = ReminderServiceWrapper.GetUserByGuid(userCandidate.Guid);
             if (userInStorage != null && userInStorage.CheckPassword(userCandidate))
                 return userInStorage;
             return null;
@@ -96,12 +96,12 @@ namespace Architecture_Reminder.Managers
 
         public static void DeleteReminder(Reminder selectedReminder)
         {
-            EntityWrapper.DeleteReminder(selectedReminder);
+            ReminderServiceWrapper.DeleteReminder(selectedReminder);
         }
 
         public static void AddReminder(Reminder reminder)
         {
-            EntityWrapper.AddReminder(reminder);
+            ReminderServiceWrapper.AddReminder(reminder);
         }
 
     }
