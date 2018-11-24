@@ -7,7 +7,7 @@ using Architecture_Reminder.DBModels;
 
 namespace Architecture_Reminder.DBAdapter
 {
-    public static class ReminderServiceWrapper
+    public static class EntityWrapper
     {
         public static bool UserExists(string login)
         {

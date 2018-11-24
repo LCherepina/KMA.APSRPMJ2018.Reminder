@@ -10,24 +10,24 @@ namespace Architecture_Reminder.ReminderService
     {
         private void InitializeComponent()
         {
-            this._serviceProcessInstaller = new System.ServiceProcess.ServiceProcessInstaller();
-            this._serviceInstaller = new System.ServiceProcess.ServiceInstaller();
+            this._serviceProcessInstaller = new ServiceProcessInstaller();
+            this._serviceInstaller = new ServiceInstaller();
             // 
             // _serviceProcessInstaller
             // 
-            this._serviceProcessInstaller.Account = System.ServiceProcess.ServiceAccount.LocalSystem;
+            this._serviceProcessInstaller.Account = ServiceAccount.LocalSystem;
             this._serviceProcessInstaller.Password = null;
             this._serviceProcessInstaller.Username = null;
-            this._serviceProcessInstaller.AfterInstall += new System.Configuration.Install.InstallEventHandler(this._serviceProcessInstaller_AfterInstall);
+            this._serviceProcessInstaller.AfterInstall += new InstallEventHandler(this._serviceProcessInstaller_AfterInstall);
             // 
             // _serviceInstaller
             // 
-            this._serviceInstaller.StartType = System.ServiceProcess.ServiceStartMode.Automatic;
-            this._serviceInstaller.AfterInstall += new System.Configuration.Install.InstallEventHandler(this._serviceInstaller_AfterInstall);
+            this._serviceInstaller.StartType = ServiceStartMode.Automatic;
+            this._serviceInstaller.AfterInstall += new InstallEventHandler(this._serviceInstaller_AfterInstall);
             // 
             // ProjectInstaller
             // 
-            this.Installers.AddRange(new System.Configuration.Install.Installer[] {
+            this.Installers.AddRange(new Installer[] {
                 this._serviceProcessInstaller,
                 this._serviceInstaller});
 

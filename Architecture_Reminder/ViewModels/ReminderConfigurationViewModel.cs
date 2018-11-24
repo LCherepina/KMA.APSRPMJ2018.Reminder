@@ -28,7 +28,7 @@ namespace Architecture_Reminder.ViewModels
             set
             {
                 _currentReminder.RemDate = value;
-                ReminderServiceWrapper.SaveReminder(_currentReminder);
+                EntityWrapper.SaveReminder(_currentReminder);
                 OnPropertyChanged();
             }
         }
@@ -51,7 +51,7 @@ namespace Architecture_Reminder.ViewModels
                    _currentReminder.RemTimeHour = _currentReminder.RemTimeHour;
                    OnPropertyChanged();
                 }
-                ReminderServiceWrapper.SaveReminder(_currentReminder);
+                EntityWrapper.SaveReminder(_currentReminder);
             }
         }
         public int RemTimeMinutes
@@ -80,7 +80,7 @@ namespace Architecture_Reminder.ViewModels
                                  DispatcherPriority.ApplicationIdle);
                      }
                      */
-                ReminderServiceWrapper.SaveReminder(_currentReminder);
+                EntityWrapper.SaveReminder(_currentReminder);
             }
         }
 
@@ -90,7 +90,7 @@ namespace Architecture_Reminder.ViewModels
             set
             {
                 _currentReminder.RemText = value;
-                ReminderServiceWrapper.SaveReminder(_currentReminder);
+                EntityWrapper.SaveReminder(_currentReminder);
                 OnPropertyChanged();
             }
         }

@@ -1,6 +1,7 @@
 ﻿
 using Architecture_Reminder.DBAdapter;
 using Architecture_Reminder.DBModels;
+using Architecture_Reminder.ServiceInterface;
 
 namespace Architecture_Reminder.Managers
 {
@@ -57,7 +58,7 @@ namespace Architecture_Reminder.Managers
 
         public static void UpdateUser(User currentUser)
         {
-            ReminderServiceWrapper.SaveUser(currentUser);
+          //  ReminderServiceWrapper.SaveUser(currentUser);
             //SaveChanges();
         }
         private static void SaveChanges()
@@ -66,10 +67,10 @@ namespace Architecture_Reminder.Managers
             
         }
 
-        public static User GetLastUser()
-        {
-            return ReminderServiceWrapper.GetLastUserByDate();
-        }
+   //     public static User GetLastUser()
+  //      {
+      //      return ReminderServiceWrapper.GetLastUserByDate();
+   //     }
 
         public static bool UserExists(string login)
         {

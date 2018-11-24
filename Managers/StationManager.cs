@@ -33,9 +33,10 @@ namespace Architecture_Reminder.Managers
         private static User GetLastUser()
         {
             User userCandidate;
+            userCandidate = null;
             try
             {
-                userCandidate = DBManager.GetLastUser();
+               //   userCandidate = DBManager.GetLastUser();
             }
             catch (Exception e)
             {
