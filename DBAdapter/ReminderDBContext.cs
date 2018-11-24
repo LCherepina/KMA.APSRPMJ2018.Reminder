@@ -7,7 +7,7 @@ namespace Architecture_Reminder.DBAdapter
 {
     internal class ReminderDBContext : DbContext
     {
-        public ReminderDBContext():base("DB")//:base("NewReminderDB")
+        public ReminderDBContext() : base("NewReminderDB")//:base("DB")//
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<ReminderDBContext, Configuration>(true));
         }
