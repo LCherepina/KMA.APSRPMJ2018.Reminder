@@ -18,6 +18,10 @@ namespace Architecture_Reminder.ReminderService
             this._serviceProcessInstaller.Account = ServiceAccount.LocalSystem;
             this._serviceProcessInstaller.Password = null;
             this._serviceProcessInstaller.Username = null;
+
+            this._serviceInstaller.DisplayName = "Reminder Simulator Service1";
+            this._serviceInstaller.ServiceName = "ReminderSimulatorService1";
+
             this._serviceProcessInstaller.AfterInstall += new InstallEventHandler(this._serviceProcessInstaller_AfterInstall);
             // 
             // _serviceInstaller
